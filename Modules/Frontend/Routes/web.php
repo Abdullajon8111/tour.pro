@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('frontend')->group(function() {
-    Route::get('/', 'FrontendController@index');
-});
+use Modules\Frontend\Http\Controllers\PageController;
+
+Route::get('/', [PageController::class, 'index'])->name('page.index');
+Route::get('/tour', [PageController::class, 'show'])->name('page.show');

@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" dir="{{ config('backpack.base.html_direction') }}">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Module Frontend</title>
-
-
+        @include('frontend::inc.head')
+        <link href="{{ asset('packages/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('packages/select2-bootstrap-theme/dist/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     </head>
-    <body>
-        @yield('content')
+<body class="app">
 
-    </body>
+    @include('frontend::partials.nav')
+
+    @yield('content')
+
+    <footer class="app-footer sticky-footer">
+        @include('frontend::inc.footer')
+    </footer>
+
+    @yield('before_scripts')
+    @stack('before_scripts')
+
+    @include(backpack_view('inc.scripts'))
+
+    @yield('after_scripts')
+    @stack('after_scripts')
+
+    <script src="{{ asset('packages/select2/dist/js/select2.full.min.js') }}"></script>
+    @if (app()->getLocale() !== 'en')
+        <script src="{{ asset('packages/select2/dist/js/i18n/' . str_replace('_', '-', app()->getLocale()) . '.js') }}"></script>
+    @endif
+
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({theme: "bootstrap"});
+        });
+    </script>
+</body>
 </html>
