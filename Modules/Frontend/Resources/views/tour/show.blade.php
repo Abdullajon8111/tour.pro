@@ -23,7 +23,7 @@
 
         .banner .banner-mask {
             background-color: #000;
-            opacity: .3;
+            opacity: .4;
             position: absolute;
             top: 0;
             left: 0;
@@ -34,30 +34,6 @@
 
         .banner-text {
             text-shadow: 0 2px 2px rgb(0 0 0 / 90%);
-        }
-
-        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active  {
-            color: #fff;
-            background-color: #7c69ef;
-        }
-
-        .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus {
-            background-color: #7c69ef;
-        }
-
-        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
-            color: #000;
-            background-color: #fff;
-        }
-
-        .nav-tabs .nav-item {
-            margin-right: 5px;
-        }
-
-        .nav-tabs .nav-item .nav-link {
-            padding: 0 20px;
-            height: 48px;
-            line-height: 50px;
         }
     </style>
 @endsection
@@ -81,73 +57,90 @@
 
     <div class="container" style="margin-top: -150px;">
         <div class="row">
-            <div class="col">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#tab-1" role="tab">
-                            {{ __('Описание') }}
-                        </a>
-                    </li>
+            <div class="col-lg-9">
+                @include('frontend::tour.tabcontrol')
 
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tab-2">
-                            {{ __('Программа') }}
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-3">
-                            {{ __('О курорте') }}
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-3">
-                            {{ __('Отели') }}
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-3">
-                            {{ __('Цены') }}
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-3">
-                            {{ __('Виза') }}
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-3">
-                            {{ __('Фото') }}
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="tab-content">
-                    <div class="tab-pane fade show active" id="tab-1" role="tabpanel">
-                        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro
-                        synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher
-                        retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
-                        placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+                <div class="card shadow-sm mt-5">
+                    <div class="card-header py-4">
+                        <h4 class="text-center mb-0 font-weight-bold">{{ __('ОТЗЫВЫ ТУРИСТОВ') }}</h4>
                     </div>
-                    <div class="tab-pane fade" id="tab-2" role="tabpanel">
-                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1
-                        labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft
-                        beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
-                        vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica
-                        VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson
-                        8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
-                        stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+
+                    <div class="card-body">
+                        <div class="p-4">
+                            <div class="avatar-info float-left mr-4">
+                                <img class="img-avatar" width="122" src="{{ asset('images/avatar.png') }}" alt="avatar">
+                                <h5 class="mt-2 text-center text-black-50">Наталья</h5>
+
+                            </div>
+
+                            <div class="rating-star w-100">
+                                <i class="la la-star text-warning la-2x"></i>
+                                <i class="la la-star text-warning la-2x"></i>
+                                <i class="la la-star text-warning la-2x"></i>
+                                <i class="la la-star la-2x"></i>
+                                <i class="la la-star la-2x"></i>
+                            </div>
+                            <br>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda autem debitis eum facere, fuga hic, in itaque libero maiores nobis nostrum provident repellat saepe soluta suscipit ullam, voluptas.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda autem debitis eum facere, fuga hic, in itaque libero maiores nobis nostrum provident repellat saepe soluta suscipit ullam, voluptas.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda autem debitis eum facere, fuga hic, in itaque libero maiores nobis nostrum provident repellat saepe soluta suscipit ullam, voluptas.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda autem debitis eum facere, fuga hic, in itaque libero maiores nobis nostrum provident repellat saepe soluta suscipit ullam, voluptas.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda autem debitis eum facere, fuga hic, in itaque libero maiores nobis nostrum provident repellat saepe soluta suscipit ullam, voluptas.
+                            </p>
+                        </div>
+
+                        <div class="p-4">
+                            <p>{{ __('Здесь еще не было добавлено ни одного отзыва. Добавьте свой отзыв и станьте первым!') }}</p>
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="tab-3" role="tabpanel">
-                        Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro
-                        fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone
-                        skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings
-                        gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel
-                        fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer
-                        blog stumptown. Pitchfork sustainable tofu synth chambray yr.
+
+                    <div class="card-footer">
+                        <form class="p-4" method="post" action="/">
+                            @csrf
+                            <h4 class="font-weight-bold">{{ __('Оставить отзыв') }}</h4>
+                            <div class="select rating d-flex">
+                                <div class="float-left my-auto">Рейтинг</div>
+                                @include('frontend::tour.select-rating-star')
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-8">
+                                    <textarea name="comment" cols="30" rows="10" class="form-control" placeholder="{{ __('Ваш отзыв') }}"></textarea>
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <input type="text" name="name" class="form-control" placeholder="{{ __('Имя') }}">
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="form-group col-lg-6">
+                                    <input type="email" class="form-control" placeholder="{{ __('Email') }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-primary px-4 py-2 text-uppercase">
+                                    Отправить
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group text-center">
+                    <button class="btn btn-primary px-4 py-2 text-uppercase font-weight-bold" style="border-radius: 50px">
+                        {{ __('Заказать тур') }}
+                        <i class="la la-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="card border-0">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="m-0 font-weight-bold text-center">15 162 000 UZS</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="font-weight-bold text-center">{{ __('На одного человека') }}</div>
                     </div>
                 </div>
             </div>
