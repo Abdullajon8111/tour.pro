@@ -34,13 +34,13 @@
 @endpush
 
 <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#tab-1" role="tab">{{ __('Описание') }}</a></li>
-    <li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#tab-2">{{ __('Программа') }}</a></li>
-    <li class="nav-item"><a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-3">{{ __('О курорте') }}</a></li>
-    <li class="nav-item"><a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-4">{{ __('Отели') }}</a></li>
-    <li class="nav-item"><a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-5">{{ __('Цены') }}</a></li>
-    <li class="nav-item"><a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-6">{{ __('Виза') }}</a></li>
-    <li class="nav-item"><a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-7">{{ __('Фото') }}</a></li>
+    <li class="nav-item"><button class="nav-link active" id="home-tab" data-toggle="tab" href="#tab-1" role="tab">{{ __('Описание') }}</button></li>
+    <li class="nav-item"><button class="nav-link" id="profile-tab" data-toggle="tab" href="#tab-2">{{ __('Программа') }}</button></li>
+    <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-3">{{ __('О курорте') }}</button></li>
+    <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-4">{{ __('Отели') }}</button></li>
+    <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-5">{{ __('Цены') }}</button></li>
+    <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-6">{{ __('Виза') }}</button></li>
+    <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-7">{{ __('Фото') }}</button></li>
 </ul>
 
 <div class="tab-content shadow-sm" id="tab-content">

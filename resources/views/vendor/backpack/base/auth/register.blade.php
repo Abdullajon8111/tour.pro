@@ -38,6 +38,20 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="control-label" for="phone">{{ trans('Phone') }}</label>
+
+                            <div>
+                                <input type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" id="phone" value="{{ old('phone') }}">
+
+                                @if ($errors->has('phone'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="control-label" for="password">{{ trans('backpack::base.password') }}</label>
 
                             <div>

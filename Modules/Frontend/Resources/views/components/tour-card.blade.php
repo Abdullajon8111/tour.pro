@@ -23,12 +23,16 @@
 
 <div class="row no-gutters border bg-white rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative grid-divider">
     <div class="col-auto d-none d-lg-block">
-        <img height="222" src="{{ asset('images/beautiful-sun-shining-across-mountains-1-720x606.jpg') }}"
-             alt="tour-img">
+        <a href="{{ route('frontend.page.show') }}">
+            <img height="222" src="{{ asset('images/beautiful-sun-shining-across-mountains-1-720x606.jpg') }}"
+                 alt="tour-img">
+        </a>
     </div>
 
     <div class="col p-4 d-flex flex-column position-static">
-        <h3 class="mb-0 font-weight-bold">Featured post</h3>
+        <a href="{{ route('frontend.page.show') }}">
+            <h3 class="mb-0 font-weight-bold">Featured post</h3>
+        </a>
         <p class="card-text mb-auto mt-3">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
 
         <div class="row">
@@ -52,7 +56,7 @@
     <div class="col p-4 d-flex flex-column position-static vr">
         <div class="text-center mt-5">
             <h4 class="font-weight-bold text-success">15 162 000 UZS</h4>
-            <button class="btn btn-info rounded">Подробнее</button>
+            <a href="{{ route('frontend.page.show') }}" class="btn btn-info rounded">Подробнее</a>
         </div>
 
     </div>

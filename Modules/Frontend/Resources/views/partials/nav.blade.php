@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link font-weight-bold" href="#">{{ __('Главная') }} </a>
+                    <a class="nav-link font-weight-bold" href="{{ route('frontend.page.index') }}">{{ __('Главная') }} </a>
                 </li>
             </ul>
             <ul class="navbar-nav">
