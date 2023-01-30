@@ -6,6 +6,9 @@
         "filebrowserBrowseUrl" => backpack_url('elfinder/ckeditor'),
         "extraPlugins" => $field['extra_plugins'],
         "embed_provider" => "//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}",
+
+        'cloudServices_uploadUrl' => 'https://33333.cke-cs.com/easyimage/upload/',
+        'cloudServices_tokenUrl' => 'https://33333.cke-cs.com/token/dev/ijrDsqFix838Gh3wGO3F77FSW94BwcLXprJ4APSp3XQ26xsUHTi0jcb1hoBt',
     ];
 
     $field['options'] = array_merge($defaultOptions, $field['options'] ?? []);
