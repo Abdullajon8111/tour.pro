@@ -54,7 +54,6 @@
                                 @csrf
                                 <button type="submit" class="dropdown-item">{{ __('выйти') }}</button>
                             </form>
-
                         </div>
                     </li>
                 @endauth
