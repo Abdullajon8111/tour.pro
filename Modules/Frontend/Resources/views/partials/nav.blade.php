@@ -25,6 +25,39 @@
                         <a class="dropdown-item" href="#">RU</a>
                     </div>
                 </li>
+
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ __('Войти') }}</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            {{ __('Регистрация') }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('register.tourist') }}">{{ __('турист') }}</a>
+                            <a class="dropdown-item" href="{{ route('register.agent') }}">{{ __('турагент') }}</a>
+                        </div>
+                    </li>
+                @endguest
+
+                @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            {{ auth()->user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <form action="{{ route('auth.logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item">{{ __('выйти') }}</button>
+                            </form>
+
+                        </div>
+                    </li>
+                @endauth
             </ul>
 
         </div>

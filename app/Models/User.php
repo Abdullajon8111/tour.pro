@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone'
+        'name', 'email', 'password', 'login'
     ];
 
     /**
@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function tourist(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Tourist::class);
+    }
+
+    public function tourAgent(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(TourAgent::class);
+    }
 }
