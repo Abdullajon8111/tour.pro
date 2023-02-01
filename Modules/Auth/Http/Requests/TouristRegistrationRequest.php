@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 class TouristRegistrationRequest extends FormRequest
 {
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'required',
@@ -20,7 +20,7 @@ class TouristRegistrationRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'name' => __('имя'),
@@ -33,7 +33,7 @@ class TouristRegistrationRequest extends FormRequest
         ];
     }
 
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }

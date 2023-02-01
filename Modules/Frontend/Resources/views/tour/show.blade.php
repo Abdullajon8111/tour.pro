@@ -60,70 +60,7 @@
             <div class="col-lg-9">
                 @include('frontend::tour.tabcontrol')
 
-                <div class="card shadow-sm mt-5">
-                    <div class="card-header py-4">
-                        <h4 class="text-center mb-0 font-weight-bold">{{ __('ОТЗЫВЫ ТУРИСТОВ') }}</h4>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="p-4">
-                            <div class="avatar-info float-left mr-4">
-                                <img class="img-avatar" width="122" src="{{ asset('images/avatar.png') }}" alt="avatar">
-                                <h5 class="mt-2 text-center text-black-50">Наталья</h5>
-
-                            </div>
-
-                            <div class="rating-star w-100">
-                                <i class="la la-star text-warning la-2x"></i>
-                                <i class="la la-star text-warning la-2x"></i>
-                                <i class="la la-star text-warning la-2x"></i>
-                                <i class="la la-star la-2x"></i>
-                                <i class="la la-star la-2x"></i>
-                            </div>
-                            <br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda autem debitis eum facere, fuga hic, in itaque libero maiores nobis nostrum provident repellat saepe soluta suscipit ullam, voluptas.
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda autem debitis eum facere, fuga hic, in itaque libero maiores nobis nostrum provident repellat saepe soluta suscipit ullam, voluptas.
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda autem debitis eum facere, fuga hic, in itaque libero maiores nobis nostrum provident repellat saepe soluta suscipit ullam, voluptas.
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda autem debitis eum facere, fuga hic, in itaque libero maiores nobis nostrum provident repellat saepe soluta suscipit ullam, voluptas.
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda autem debitis eum facere, fuga hic, in itaque libero maiores nobis nostrum provident repellat saepe soluta suscipit ullam, voluptas.
-                            </p>
-                        </div>
-
-                        <div class="p-4">
-                            <p>{{ __('Здесь еще не было добавлено ни одного отзыва. Добавьте свой отзыв и станьте первым!') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <form class="p-4" method="post" action="/">
-                            @csrf
-                            <h4 class="font-weight-bold">{{ __('Оставить отзыв') }}</h4>
-                            <div class="select rating d-flex">
-                                <div class="float-left my-auto">Рейтинг</div>
-                                @include('frontend::tour.select-rating-star')
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-8">
-                                    <textarea name="comment" cols="30" rows="10" class="form-control" placeholder="{{ __('Ваш отзыв') }}"></textarea>
-                                </div>
-
-                                <div class="form-group col-lg-6">
-                                    <input type="text" name="name" class="form-control" placeholder="{{ __('Имя') }}">
-                                </div>
-                                <div class="col-lg-1"></div>
-                                <div class="form-group col-lg-6">
-                                    <input type="email" class="form-control" placeholder="{{ __('Email') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <button class="btn btn-primary px-4 py-2 text-uppercase">
-                                    Отправить
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                @include('frontend::tour.comments')
             </div>
 
             <div class="col-lg-3">

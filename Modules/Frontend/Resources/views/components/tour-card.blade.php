@@ -36,14 +36,14 @@
         <p class="card-text mb-auto mt-3">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
 
         <div class="row">
-            <div class="col">
+            <div class="col-6">
                 <div class="bg-secondary rounded px-2 p-1">
                     <i class="la la-clock mr-2 text-danger"></i>
                     <span>От 7 до 14 дней</span>
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-3">
                 <div class="bg-secondary rounded px-2 p-1">
                     <i class="la la-user mr-2 text-danger"></i>
                     <span>0+</span>

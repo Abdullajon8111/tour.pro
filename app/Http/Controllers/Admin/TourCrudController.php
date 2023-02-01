@@ -99,7 +99,7 @@ class TourCrudController extends CrudController
             'tab' => __('Программа'),
         ]);
 
-        CRUD::field('about')->type('tinymce')->label(__('О курорте'))->tab(__('О курорте'));
+        CRUD::field('about')->type('ckeditor')->label(__('О курорте'))->tab(__('О курорте'));
         CRUD::field('hotels')->type('ckeditor')->label(__('Отели'))->tab(__('Отели'));
 
         // Цена

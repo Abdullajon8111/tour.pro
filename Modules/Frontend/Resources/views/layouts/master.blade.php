@@ -9,7 +9,9 @@
 
     @include('frontend::partials.nav')
 
-    @yield('content')
+    <div class="w-100 overflow-hidden">
+        @yield('content')
+    </div>
 
 {{--    <footer class="app-footer sticky-footer">--}}
 {{--        @include('frontend::inc.footer')--}}

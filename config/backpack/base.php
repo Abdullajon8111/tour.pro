@@ -24,7 +24,7 @@ return [
     // ----
 
     // Project name. Shown in the window title.
-    'project_name' => 'Admin Panel',
+    'project_name' => 'Travel and Tour',
 
     // When clicking on the admin panel's top-left logo/name,
     // where should the user be redirected?
@@ -164,7 +164,7 @@ return [
     | By default the registration is open only on localhost.
     */
 
-    'registration_open' => env('BACKPACK_REGISTRATION_OPEN', env('APP_ENV') === 'local'),
+    'registration_open' => env('BACKPACK_REGISTRATION_OPEN', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -204,7 +204,7 @@ return [
 
     // Set this to false if you would like to skip adding the password recovery routes
     // (you then need to manually define the routes in your web.php)
-    'setup_password_recovery_routes' => true,
+    'setup_password_recovery_routes' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -254,8 +254,8 @@ return [
     // Username column for authentication
     // The Backpack default is the same as the Laravel default (email)
     // If you need to switch to username, you also need to create that column in your db
-    'authentication_column'      => 'email',
-    'authentication_column_name' => 'Email',
+    'authentication_column'      => 'login',
+    'authentication_column_name' => 'backpack::base.login',
 
     // The guard that protects the Backpack admin panel.
     // If null, the config.auth.defaults.guard value will be used.
@@ -299,7 +299,7 @@ return [
     // of your project and it's used throughout all Backpack packages.
     //
     // You can rename this disk here. Default: root
-    'root_disk_name' => 'root',
+    'root_disk_name' => 'public',
 
     /*
     |--------------------------------------------------------------------------

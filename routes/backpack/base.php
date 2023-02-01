@@ -12,10 +12,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+$roleAdmin = \App\Models\Role::ADMIN;
+$roleAgent = \App\Models\Role::AGENT;
+
 Route::group(
 [
     'namespace'  => 'App\Http\Controllers',
-    'middleware' => config('backpack.base.web_middleware', 'web'),
+    'middleware' => [config('backpack.base.web_middleware', 'web'), "role:{$roleAdmin}|{$roleAgent}"], 'admin',
     'prefix'     => config('backpack.base.route_prefix'),
 ],
 function () {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Role;
 use Closure;
 
 class CheckIfAdmin
@@ -27,7 +28,9 @@ class CheckIfAdmin
      */
     private function checkIfUserIsAdmin($user)
     {
-        // return ($user->is_admin == 1);
+        $user = auth()->user();
+        abort_if(!$user->hasRole([Role::ADMIN, Role::AGENT]), 403);
+
         return true;
     }
 

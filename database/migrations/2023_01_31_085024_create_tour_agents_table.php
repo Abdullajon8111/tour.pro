@@ -22,6 +22,7 @@ class CreateTourAgentsTable extends Migration
             $table->string('phone2')->nullable();
 
             $table->foreignId('region_id')->nullable();
+            $table->foreignId('user_id');
 
             $table->timestamps();
             $table->softDeletes();
