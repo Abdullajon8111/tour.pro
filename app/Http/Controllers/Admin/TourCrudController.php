@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\TourRequest;
+use App\Models\Role;
 use App\Models\Tour;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -110,7 +111,17 @@ class TourCrudController extends CrudController
 
         CRUD::field('images')->type('upload_multiple')->label(__('Галерея'))->tab(__('Галерея'));
 
-        CRUD::field('region_id');
+        if (auth()->user()->hasRole(Role::ADMIN)) {
+            CRUD::field('region_id');
+        }
+
+        if (auth()->user()->hasRole(Role::AGENT)) {
+            Tour::created(function (Tour $tour) {
+                $agent = auth()->user()->tourAgent;
+
+                $tour->region_id = $agent->region_id ?? null;
+            });
+        }
     }
 
     protected function setupUpdateOperation()

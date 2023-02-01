@@ -14,3 +14,5 @@
 @endrole
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('tour') }}'><i class='nav-icon la la-plane'></i> {{ __('Туры') }}</a></li>
+
+{{--<li class="nav-item"><a class="nav-link" href="{{ backpack_url('elfinder') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>--}}
