@@ -1,3 +1,9 @@
+@php
+/**
+ * @var $tour \App\Models\Tour
+  */
+@endphp
+
 @push('after_styles')
     <style>
         .vr {
@@ -22,31 +28,31 @@
 @endpush
 
 <div class="row no-gutters border bg-white rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative grid-divider">
-    <div class="col-auto d-none d-lg-block">
-        <a href="{{ route('frontend.page.show') }}">
-            <img height="222" src="{{ asset('images/beautiful-sun-shining-across-mountains-1-720x606.jpg') }}"
+    <div class="col d-none d-lg-block">
+        <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}">
+            <img height="250" src="{{ asset("storage/{$tour->banner_image}") }}"
                  alt="tour-img">
         </a>
     </div>
 
     <div class="col p-4 d-flex flex-column position-static">
-        <a href="{{ route('frontend.page.show') }}">
-            <h3 class="mb-0 font-weight-bold">Featured post</h3>
+        <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}">
+            <h4 class="mb-0 font-weight-bold">{{ $tour->name }}</h4>
         </a>
-        <p class="card-text mb-auto mt-3">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text mb-auto mt-3">{{ $tour->title }}</p>
 
         <div class="row">
             <div class="col-6">
                 <div class="bg-secondary rounded px-2 p-1">
                     <i class="la la-clock mr-2 text-danger"></i>
-                    <span>От 7 до 14 дней</span>
+                    <span>{{ $tour->duration }}</span>
                 </div>
             </div>
 
             <div class="col-3">
                 <div class="bg-secondary rounded px-2 p-1">
                     <i class="la la-user mr-2 text-danger"></i>
-                    <span>0+</span>
+                    <span>{{ $tour->age_limit }}</span>
                 </div>
             </div>
         </div>
@@ -55,8 +61,8 @@
 
     <div class="col p-4 d-flex flex-column position-static vr">
         <div class="text-center mt-5">
-            <h4 class="font-weight-bold text-success">15 162 000 UZS</h4>
-            <a href="{{ route('frontend.page.show') }}" class="btn btn-info rounded">Подробнее</a>
+            <h4 class="font-weight-bold text-success">{{ number_format($tour->price_one) }}</h4>
+            <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}" class="btn btn-info rounded">{{ __('Подробнее') }}</a>
         </div>
 
     </div>

@@ -14,4 +14,4 @@
 use Modules\Frontend\Http\Controllers\PageController;
 
 Route::get('/', [PageController::class, 'index'])->name('page.index');
-Route::get('/tour', [PageController::class, 'show'])->name('page.show');
+Route::get('/tour/{tour:slug}', [PageController::class, 'show'])->name('page.show');

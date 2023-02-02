@@ -25,7 +25,7 @@
     			@if (isset($field['temporary']))
 		            <a target="_blank" href="{{ isset($field['disk'])?asset(\Storage::disk($field['disk'])->temporaryUrl($file_path, Carbon\Carbon::now()->addMinutes($field['temporary']))):asset($file_path) }}">{{ $file_path }}</a>
 		        @else
-		            <a target="_blank" href="{{ isset($field['disk'])?asset(\Storage::disk($field['disk'])->url($file_path)):asset($file_path) }}">{{ $file_path }}</a>
+		            <a target="_blank" href="{{ isset($field['disk'])?asset(\Storage::disk($field['disk'])->url(Arr::get($field, 'prefix', '').$file_path)):asset($file_path) }}">{{ $file_path }}</a>
 		        @endif
 		    	<a href="#" class="btn btn-light btn-sm float-right file-clear-button" title="Clear file" data-filename="{{ $file_path }}"><i class="la la-remove"></i></a>
 		    	<div class="clearfix"></div>

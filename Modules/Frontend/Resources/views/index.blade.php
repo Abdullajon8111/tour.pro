@@ -13,8 +13,8 @@
             <hr class="w-100">
         </div>
 
-        @foreach(range(1, 10) as $i)
-            @include('frontend::components.tour-card')
+        @foreach($tours as $tour)
+            @include('frontend::components.tour-card', compact('tour'))
         @endforeach
 
     </div>

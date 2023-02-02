@@ -56,8 +56,10 @@ class TourCrudController extends CrudController
         CRUD::setValidation(TourRequest::class);
 
         CRUD::field('name')->type('text')->label(__('Имя'))->tab(__('Описание'));
+        CRUD::field('title')->type('text')->label(__('Заголовок'))->tab(__('Описание'));
+        CRUD::field('sub_title')->type('text')->label(__('Подзаголовок'))->tab(__('Описание'));
         CRUD::field('description')->type('ckeditor')->label(__('Описание'))->tab(__('Описание'));
-        CRUD::field('banner_image')->type('upload')->label(__('Изображение баннера'))->tab(__('Описание'));
+        CRUD::field('banner_image')->type('upload')->upload(true)->disk('uploads')->label(__('Изображение баннера'))->tab(__('Описание'));
         CRUD::field('duration')->type('text')->label(__('Продолжительность'))->tab(__('Описание'));
         CRUD::field('age_limit')->type('text')->label(__('Возрастное ограничение'))->tab(__('Описание'));
 
@@ -110,7 +112,7 @@ class TourCrudController extends CrudController
         CRUD::field('price_two')->type('number')->label(__('Цена указана за двоих'))->tab(__('Цена'));
         CRUD::field('price_family')->type('number')->label(__('Цена семейного платежа'))->tab(__('Цена'));
 
-        CRUD::field('images')->type('upload_multiple')->label(__('Галерея'))->tab(__('Галерея'));
+        CRUD::field('images')->type('upload_multiple')->disk('uploads')->label(__('Галерея'))->tab(__('Галерея'));
 
         if (auth()->user()->hasRole(Role::ADMIN)) {
             CRUD::field('region_id');
