@@ -74,11 +74,12 @@ class TourCrudController extends CrudController
             'name' => 'time_type',
             'type' => 'select_from_array',
             'options' => Tour::time_types(),
-            'label' => __('Тип времени')
+            'label' => __('Тип времени'),
+            'tab' => __('Описание')
         ]);
 
-        CRUD::field('start_time')->label(__('Время начала'));
-        CRUD::field('end_time')->label(__('Время окончания'));
+        CRUD::field('start_time')->label(__('Время начала'))->tab(__('Описание'));
+        CRUD::field('end_time')->label(__('Время окончания'))->tab(__('Описание'));
 
         CRUD::addField([
             'name'  => 'program',
