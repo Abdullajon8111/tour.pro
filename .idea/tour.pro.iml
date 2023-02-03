@@ -149,5 +149,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="lightgallery" level="application" />
+    <orderEntry type="library" name="photoswipe" level="application" />
   </component>
 </module>

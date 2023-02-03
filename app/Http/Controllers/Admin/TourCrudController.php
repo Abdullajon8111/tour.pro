@@ -112,7 +112,7 @@ class TourCrudController extends CrudController
         CRUD::field('price_two')->type('number')->label(__('Цена указана за двоих'))->tab(__('Цена'));
         CRUD::field('price_family')->type('number')->label(__('Цена семейного платежа'))->tab(__('Цена'));
 
-        CRUD::field('visa')->type('ckeditor')->label('Виза')->label(__('Виза'));
+        CRUD::field('visa')->type('ckeditor')->label('Виза')->label(__('Виза'))->tab(__('Виза'));
 
         CRUD::field('images')->type('upload_multiple')->disk('uploads')->label(__('Галерея'))->tab(__('Галерея'));
 
