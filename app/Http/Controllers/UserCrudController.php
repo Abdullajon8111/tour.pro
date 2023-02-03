@@ -29,8 +29,8 @@ class UserCrudController extends CrudController
                 'type'  => 'text',
             ],
             [
-                'name'  => 'phone',
-                'label' => __('Phone'),
+                'name'  => 'login',
+                'label' => trans('Login'),
                 'type'  => 'text',
             ],
             [
@@ -113,11 +113,7 @@ class UserCrudController extends CrudController
         return $this->traitStore();
     }
 
-    /**
-     * Update the specified resource in the database.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function update()
     {
         $this->crud->setRequest($this->crud->validateRequest());
@@ -156,8 +152,8 @@ class UserCrudController extends CrudController
                 'type'  => 'text',
             ],
             [
-                'name'  => 'phone',
-                'label' => __('Phone'),
+                'name'  => 'login',
+                'label' => __('Login'),
                 'type'  => 'text',
             ],
             [

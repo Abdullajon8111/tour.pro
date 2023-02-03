@@ -15,5 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('home', '/');
+Route::redirect('admin/logout', '/');
 
-Route::post('upload', [FileController::class, 'upload'])->name('file.upload');
+Route::get('language/{locale}', function ($locale) {
+
+    if (in_array($locale, config('app.locales'))) {
+        app()->setLocale($locale);
+        session()->put('locale', $locale);
+    }
+
+    return redirect()->back();
+});

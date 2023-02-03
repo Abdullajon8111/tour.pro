@@ -2,28 +2,28 @@
     <div class="form-group col-lg-3">
         <select class="form-control custom-select select2">
             <option value="">{{ __('Выберите направление') }}</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+            @foreach($countries as $key => $value)
+                <option value="{{ $key }}">{{ $value }}</option>
+            @endforeach
         </select>
     </div>
 
     <div class="form-group col-lg-3">
         <select class="form-control custom-select select2">
             <option value="">{{ __('Выберите область') }}</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+            @foreach($regions as $region)
+                <option value="{{ $region->id }}">{{ $region->name }}</option>
+            @endforeach
         </select>
     </div>
 
     <div class="form-group col-lg-3">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="{{ __('Туры по словам') }}" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <input name="key" type="text" class="form-control" placeholder="{{ __('Туры по словам') }}">
             <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">
-                        <i class="la la-search"></i>
-                    </span>
+                <span class="input-group-text">
+                    <i class="la la-search"></i>
+                </span>
             </div>
         </div>
     </div>

@@ -18,7 +18,11 @@ $roleAgent = \App\Models\Role::AGENT;
 Route::group(
 [
     'namespace'  => 'App\Http\Controllers',
-    'middleware' => [config('backpack.base.web_middleware', 'web'), "role:{$roleAdmin}|{$roleAgent}"], 'admin',
+    'middleware' => [
+        config('backpack.base.web_middleware', 'web'),
+        "role:{$roleAdmin}|{$roleAgent}",
+        'admin'
+    ],
     'prefix'     => config('backpack.base.route_prefix'),
 ],
 function () {
@@ -55,4 +59,6 @@ function () {
         Route::post('edit-account-info', 'MyAccountController@postAccountInfoForm')->name('backpack.account.info.store');
         Route::post('change-password', 'MyAccountController@postChangePasswordForm')->name('backpack.account.password');
     }
+
+    Route::post('upload', 'FileController@upload')->name('file.upload');
 });

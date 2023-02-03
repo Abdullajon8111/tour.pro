@@ -12,6 +12,7 @@ class Region extends Model
     use HasTranslations;
     use SoftDeletes;
     use CrudTrait;
+
     protected $guarded = ['id'];
     protected $translatable = ['name'];
 }
