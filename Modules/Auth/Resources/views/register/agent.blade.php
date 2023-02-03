@@ -57,12 +57,22 @@
                             @error('phone2')<span class="text-danger">{{ $errors->first('phone2') }}</span>@enderror
                         </div>
 
-                        @include('auth::fields.select2', ['field' => [
-                            'name' => 'region_id',
-                            'label' => __('регион'),
-                            'model' => \App\Models\Region::class,
-                            'wrapper' => ['class' => 'form-group']
-                        ]])
+                        <div class="form-group">
+                            <label>{{ __('регион') }}</label>
+                            <select class="custom-control custom-select" name="region_id">
+                                @foreach(\App\Models\Region::all() as $region)
+                                    <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+{{--                        @include('auth::fields.select2', ['field' => [--}}
+{{--                            'name' => 'region_id',--}}
+{{--                            'label' => __('регион'),--}}
+{{--                            'model' => \App\Models\Region::class,--}}
+{{--                            'attribute' => 'name',--}}
+{{--                            'wrapper' => ['class' => 'form-group']--}}
+{{--                        ]])--}}
                     </div>
 
                     <hr class="w-100">

@@ -23,13 +23,15 @@ class Tour extends Model
     protected $translatable = [
         'name', 'duration', 'age_limit', 'about',
         'program', 'hotels', 'price_description',
-        'description', 'sub_title', 'title'
+        'description', 'sub_title', 'title', 'visa'
     ];
 
     protected $casts = [
         'images' => 'array',
         'program' => 'array'
     ];
+
+    protected $dates = ['start_time', 'end_time'];
 
     public function sluggable(): array
     {

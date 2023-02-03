@@ -33,14 +33,35 @@
     </style>
 @endpush
 
+@php
+/** @var \App\Models\Tour $tour */
+@endphp
+
 <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item"><button class="nav-link active" id="home-tab" data-toggle="tab" href="#tab-1" role="tab">{{ __('Описание') }}</button></li>
-    <li class="nav-item"><button class="nav-link" id="profile-tab" data-toggle="tab" href="#tab-2">{{ __('Программа') }}</button></li>
-    <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-3">{{ __('О курорте') }}</button></li>
-    <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-4">{{ __('Отели') }}</button></li>
-    <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-5">{{ __('Цены') }}</button></li>
-    <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-6">{{ __('Виза') }}</button></li>
-    <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-7">{{ __('Фото') }}</button></li>
+{{--    <li class="nav-item"><button class="nav-link active" id="home-tab" data-toggle="tab" href="#tab-1" role="tab">{{ __('Описание') }}</button></li>--}}
+{{--    @if($tour->program)--}}
+{{--        <li class="nav-item"><button class="nav-link" id="profile-tab" data-toggle="tab" href="#tab-2">{{ __('Программа') }}</button></li>--}}
+    @endif
+
+    @if($tour->about)
+        <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-3">{{ __('О курорте') }}</button></li>
+    @endif
+
+    @if($tour->hotels)
+        <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-4">{{ __('Отели') }}</button></li>
+    @endif
+
+    @if($tour->price_description)
+        <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-5">{{ __('Цены') }}</button></li>
+    @endif
+
+    @if($tour->visa)
+        <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-6">{{ __('Виза') }}</button></li>
+    @endif
+
+    @if($tour->images)
+        <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-7">{{ __('Фото') }}</button></li>
+    @endif
 </ul>
 
 <div class="tab-content shadow-sm" id="tab-content">
@@ -53,7 +74,7 @@
                         <i class="my-auto text-primary la-bold la la-clock la-2x"></i>
                     </div>
                     <div class="col-8">
-                        <h6 class="font-weight-bold">От 7 до 14 дней</h6>
+                        <h6 class="font-weight-bold">{{ $tour->duration }}</h6>
                         <h6 class="text-black-50">{{ __('Количество дней') }}</h6>
                     </div>
                 </div>
@@ -64,7 +85,7 @@
                         <i class="my-auto text-primary la-bold la la-user la-2x"></i>
                     </div>
                     <div class="col-8">
-                        <h6 class="font-weight-bold">0+</h6>
+                        <h6 class="font-weight-bold">{{ $tour->age_limit }}</h6>
                         <h6 class="text-black-50">{{ __('Возраст') }}</h6>
                     </div>
                 </div>
@@ -75,37 +96,50 @@
                         <i class="my-auto text-primary la-bold la la-calendar la-2x"></i>
                     </div>
                     <div class="col-8">
-                        <h6 class="font-weight-bold">Январь – Март</h6>
-                        <h6 class="text-black-50">{{ __('Сезон') }}</h6>
+                        <h6 class="font-weight-bold">
+                            @if($tour->time_type == \App\Models\Tour::TIME_TYPE_SEASONAL)
+                                {{ $tour->start_time->getTranslatedMonthName() }}
+                                -
+                                {{ $tour->end_time->getTranslatedMonthName() }}
+                            @else
+                                {{ $tour->start_time->format('d.m.Y') }}-{{ $tour->end_time->format('d.m.Y') }}
+                            @endif
+                        </h6>
+                        <h6 class="text-black-50">
+                            {{ \App\Models\Tour::time_types()[$tour->time_type] }}
+                        </h6>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="p-4">
+            {!! $tour->description !!}
+        </div>
     </div>
 
-    <div class="tab-pane fade" id="tab-2" role="tabpanel">
-        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1
-        labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft
-        beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
-        vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica
-        VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson
-        8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
-        stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
-    </div>
+{{--    @if($tour->program)--}}
+{{--        <div class="tab-pane fade" id="tab-2" role="tabpanel">{!! $tour->program !!}</div>--}}
+{{--    @endif--}}
 
-    <div class="tab-pane fade" id="tab-3" role="tabpanel">
-        Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro
-        fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone
-        skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings
-        gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel
-        fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer
-        blog stumptown. Pitchfork sustainable tofu synth chambray yr.
-    </div>
+    @if($tour->about)
+        <div class="tab-pane fade" id="tab-3" role="tabpanel">{!! $tour->about !!}</div>
+    @endif
+    @if($tour->hotels)
+        <div class="tab-pane fade" id="tab-4" role="tabpanel">{!! $tour->hotels !!}</div>
+    @endif
+    @if($tour->price_description)
+        <div class="tab-pane fade" id="tab-5" role="tabpanel">{!! $tour->price_description !!}</div>
+    @endif
+    @if($tour->visa)
+        <div class="tab-pane fade" id="tab-6" role="tabpanel">{!! $tour->visa !!}</div>
+    @endif
 
-    <div class="tab-pane fade" id="tab-4" role="tabpanel"></div>
-    <div class="tab-pane fade" id="tab-5" role="tabpanel"></div>
-    <div class="tab-pane fade" id="tab-6" role="tabpanel"></div>
-    <div class="tab-pane fade" id="tab-7" role="tabpanel"></div>
+    @if($tour->images)
+        <div class="tab-pane fade" id="tab-7" role="tabpanel">
+
+        </div>
+    @endif
 
 
 </div>

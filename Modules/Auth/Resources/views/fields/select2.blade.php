@@ -73,19 +73,20 @@
         <script src="{{ asset('packages/select2/dist/js/i18n/' . str_replace('_', '-', app()->getLocale()) . '.js') }}"></script>
         @endif
         <script>
-            element = $('.select2_field')
+            $(document).ready(function () {
+                element = $('.select2_field')
 
-            // element will be a jQuery wrapped DOM node
-            if (!element.hasClass("select2-hidden-accessible"))
-            {
-                let $isFieldInline = element.data('field-is-inline');
+                // element will be a jQuery wrapped DOM node
+                if (!element.hasClass("select2-hidden-accessible"))
+                {
+                    let $isFieldInline = element.data('field-is-inline');
 
-                element.select2({
-                    theme: "bootstrap",
-                    dropdownParent: $isFieldInline ? $('#inline-create-dialog .modal-content') : document.body
-                });
-            }
-
+                    element.select2({
+                        theme: "bootstrap",
+                        dropdownParent: $isFieldInline ? $('#inline-create-dialog .modal-content') : document.body
+                    });
+                }
+            })
         </script>
     @endpush
 

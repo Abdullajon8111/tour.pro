@@ -38,19 +38,21 @@
     </style>
 @endsection
 
+@php /** @var \App\Models\Tour $tour */ @endphp
+
 @section('content')
     <div class="banner d-flex">
         <div class="banner-mask"></div>
         <div class="parallax-image" style="background-image: url('{{ asset('images/beautiful-sun-shining-across-mountains-1.jpg') }}')"></div>
         <div class="m-auto text-center text-white">
             <div class="d-none d-sm-none d-xl-block d-md-block d-lg-block banner-text">
-                <h1 class="banner-header-text display-2 font-weight-bold">Шри Ланка – Прямой перелет!</h1>
-                <h3 class="banner-description">Прямой перелет на Шри — Ланку 2023 | Отдых в Индии | Курорты Шри — Ланки</h3>
+                <h1 class="banner-header-text display-2 font-weight-bold">{{ $tour->name }}</h1>
+                <h3 class="banner-description">{{ $tour->sub_title }}</h3>
             </div>
 
             <div class="d-block d-sm-block d-xl-none d-md-none d-lg-none">
-                <h1 class="banner-header-text font-weight-bold">Шри Ланка – Прямой перелет!</h1>
-                <h3 class="banner-description">Прямой перелет на Шри — Ланку 2023 | Отдых в Индии | Курорты Шри — Ланки</h3>
+                <h1 class="banner-header-text font-weight-bold">{{ $tour->name }}</h1>
+                <h3 class="banner-description">{{ $tour->sub_title }}</h3>
             </div>
         </div>
     </div>

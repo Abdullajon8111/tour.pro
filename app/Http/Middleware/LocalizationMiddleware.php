@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App;
+use Carbon\Carbon;
 use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,8 +21,15 @@ class LocalizationMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        $carbon_locales = [
+            'ru' => 'ru',
+            'uz' => 'uz'
+        ];
+
         if (Session::has('locale')) {
-            App::setLocale(Session::get('locale'));
+            App::setLocale($locale = Session::get('locale'));
+
+            Carbon::setLocale($carbon_locales[$locale] ?? 'ru_RU');
         }
 
         return $next($request);

@@ -112,7 +112,13 @@ class TourCrudController extends CrudController
         CRUD::field('price_two')->type('number')->label(__('Цена указана за двоих'))->tab(__('Цена'));
         CRUD::field('price_family')->type('number')->label(__('Цена семейного платежа'))->tab(__('Цена'));
 
+        CRUD::field('visa')->type('ckeditor')->label('Виза')->label(__('Виза'));
+
         CRUD::field('images')->type('upload_multiple')->disk('uploads')->label(__('Галерея'))->tab(__('Галерея'));
+
+        Tour::creating(function (Tour $tour) {
+            $tour->user_id = auth()->id();
+        });
 
         if (auth()->user()->hasRole(Role::ADMIN)) {
             CRUD::field('region_id');
@@ -121,8 +127,8 @@ class TourCrudController extends CrudController
         if (auth()->user()->hasRole(Role::AGENT)) {
             Tour::created(function (Tour $tour) {
                 $agent = auth()->user()->tourAgent;
-
                 $tour->region_id = $agent->region_id ?? null;
+                $tour->save();
             });
         }
     }

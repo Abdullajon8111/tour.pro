@@ -30,8 +30,16 @@
 <div class="row no-gutters border bg-white rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative grid-divider">
     <div class="col d-none d-lg-block">
         <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}">
-            <img height="250" src="{{ asset("storage/{$tour->banner_image}") }}"
-                 alt="tour-img">
+{{--            <img height="250"--}}
+{{--                 width="297"--}}
+{{--                 src="{{ asset("storage/{$tour->banner_image}") }}"--}}
+{{--                 alt="tour-img">--}}
+
+            <div class="d-flex justify-content-center"
+                 style="height: 250px;
+                        background: url('{{ asset('storage/' . $tour->banner_image) }}');
+                        background-size: cover">
+            </div>
         </a>
     </div>
 
@@ -60,7 +68,7 @@
     </div>
 
     <div class="col p-4 d-flex flex-column position-static vr">
-        <div class="text-center mt-5">
+        <div class="my-auto text-center">
             <h4 class="font-weight-bold text-success">{{ number_format($tour->price_one) }}</h4>
             <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}" class="btn btn-info rounded">{{ __('Подробнее') }}</a>
         </div>
