@@ -30,7 +30,7 @@ class TourAgent extends Model
     public function setPhotoAttribute($value)
     {
         $attribute_name = "photo";
-        $disk = 'public';
+        $disk = 'uploads';
         $destination_path = "tour-agent";
 
         if ($value == null) {

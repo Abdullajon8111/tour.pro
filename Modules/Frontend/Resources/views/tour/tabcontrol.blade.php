@@ -265,36 +265,28 @@
 
     @if($tour->images)
         <div class="tab-pane fade" id="tab-7" role="tabpanel">
-            <ul id="lightgallery">
+            <div class="row" id="gallery">
                 @foreach($tour->images as $image)
-                    <li>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset("storage/{$image}") }}">
-                            <div class="demo-gallery-poster">
-                                <img src="{{ asset("storage/{$image}") }}">
-                            </div>
+                    <div class="col-lg-3">
+                        <a rel="gallery-1" href="{{ asset("storage/{$image}") }}" class="swipebox">
+                            <img class="img-thumbnail" src="{{ asset("storage/{$image}") }}" alt="">
                         </a>
-                    </li>
+                    </div>
                 @endforeach
-            </ul>
+            </div>
         </div>
     @endif
 
     @push('after_styles')
-        <link rel="stylesheet" href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css">
+        <link rel="stylesheet" href="{{ asset('packages/swipebox/css/swipebox.min.css') }}">
     @endpush
 
     @push('after_scripts')
-        <script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
-        <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
-        <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
-        <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
-        <script src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
-        <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
-        <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
-        <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+        <script src="{{ asset('packages/swipebox/js/jquery.swipebox.min.js') }}"></script>
         <script>
-            lightGallery(document.getElementById('lightgallery'))
+            $(document).ready(function () {
+                $('#gallery').swipebox();
+            })
         </script>
     @endpush
 

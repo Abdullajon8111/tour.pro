@@ -1,39 +1,41 @@
-<div class="row">
-    <div class="form-group col-lg-3">
-        <select class="form-control custom-select select2">
-            <option value="">{{ __('Выберите направление') }}</option>
-            @foreach($countries as $key => $value)
-                <option value="{{ $key }}">{{ $value }}</option>
-            @endforeach
-        </select>
-    </div>
+<form action="{{ route('frontend.page.index') }}" method="get">
+    <div class="row">
+        <div class="form-group col-lg-3">
+            <select class="form-control custom-select select2" name="country">
+                <option value="">{{ __('Выберите направление') }}</option>
+                @foreach($countries as $key => $value)
+                    <option value="{{ $key }}">{{ $value }}</option>
+                @endforeach
+            </select>
+        </div>
 
-    <div class="form-group col-lg-3">
-        <select class="form-control custom-select select2">
-            <option value="">{{ __('Выберите область') }}</option>
-            @foreach($regions as $region)
-                <option value="{{ $region->id }}">{{ $region->name }}</option>
-            @endforeach
-        </select>
-    </div>
+        <div class="form-group col-lg-3">
+            <select class="form-control custom-select select2" name="region">
+                <option value="">{{ __('Выберите область') }}</option>
+                @foreach($regions as $region)
+                    <option value="{{ $region->id }}">{{ $region->name }}</option>
+                @endforeach
+            </select>
+        </div>
 
-    <div class="form-group col-lg-3">
-        <div class="input-group">
-            <input name="key" type="text" class="form-control" placeholder="{{ __('Туры по словам') }}">
-            <div class="input-group-append">
+        <div class="form-group col-lg-3">
+            <div class="input-group">
+                <input name="key" type="text" class="form-control" placeholder="{{ __('Туры по словам') }}">
+                <div class="input-group-append">
                 <span class="input-group-text">
                     <i class="la la-search"></i>
                 </span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-lg-3">
-        <button class="btn btn-primary btn-block">
-            {{ __('Найти') }}
-        </button>
+        <div class="col-lg-3">
+            <button class="btn btn-primary btn-block">
+                {{ __('Найти') }}
+            </button>
+        </div>
     </div>
-</div>
+</form>
 
 @push('after_styles')
     <link rel="stylesheet" href="{{ asset('packages/select2/dist/css/select2.min.css') }}">

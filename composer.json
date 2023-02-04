@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.0",
         "monarobase/country-list": "^3.3",
         "nwidart/laravel-modules": "^8.3",
+        "ralphjsmit/laravel-seo": "^1.2",
         "spatie/laravel-permission": "^5.8",
         "spatie/laravel-translatable": "^4.6"
     },

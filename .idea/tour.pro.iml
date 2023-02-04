@@ -146,6 +146,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/backpack/filemanager" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cocur/slugify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cviebrock/eloquent-sluggable" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-package-tools" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ralphjsmit/laravel-helpers" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ralphjsmit/laravel-seo" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
