@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\TourRequest;
 use App\Models\Role;
+use App\Models\Tag;
 use App\Models\Tour;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -20,7 +21,7 @@ class TourCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-
+    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
 
     public function setup()
     {
@@ -116,6 +117,17 @@ class TourCrudController extends CrudController
 
         CRUD::field('images')->type('upload_multiple')->disk('uploads')->label(__('Галерея'))->tab(__('Галерея'));
 
+        $this->crud->addField([
+            'label' => 'Tags',
+            'type' => 'relationship',
+            'name' => 'tags', // the method that defines the relationship in your Model
+            'entity' => 'tags', // the method that defines the relationship in your Model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+            'inline_create' => ['entity' => 'tag'],
+            'ajax' => true,
+        ]);
+
         Tour::creating(function (Tour $tour) {
             $tour->user_id = auth()->id();
         });
@@ -136,5 +148,10 @@ class TourCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    public function fetchTags()
+    {
+        return $this->fetch(Tag::class);
     }
 }

@@ -29,7 +29,7 @@ class LocalizationMiddleware
         if (Session::has('locale')) {
             App::setLocale($locale = Session::get('locale'));
 
-            Carbon::setLocale($carbon_locales[$locale] ?? 'ru_RU');
+            Carbon::setLocale($carbon_locales[$locale] ?? 'ru');
         }
 
         return $next($request);

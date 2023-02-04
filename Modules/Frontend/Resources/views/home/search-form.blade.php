@@ -4,7 +4,7 @@
             <select class="form-control custom-select select2" name="country">
                 <option value="">{{ __('Выберите направление') }}</option>
                 @foreach($countries as $key => $value)
-                    <option value="{{ $key }}">{{ $value }}</option>
+                    <option value="{{ $key }}" @if($key == request('country')) {{ 'selected' }} @endif>{{ $value }}</option>
                 @endforeach
             </select>
         </div>
@@ -13,14 +13,14 @@
             <select class="form-control custom-select select2" name="region">
                 <option value="">{{ __('Выберите область') }}</option>
                 @foreach($regions as $region)
-                    <option value="{{ $region->id }}">{{ $region->name }}</option>
+                    <option value="{{ $region->id }}" @if($region->id == request('region')) {{ 'selected' }} @endif>{{ $region->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="form-group col-lg-3">
             <div class="input-group">
-                <input name="key" type="text" class="form-control" placeholder="{{ __('Туры по словам') }}">
+                <input name="key" type="text" class="form-control" placeholder="{{ __('Туры по словам') }}" value="{{ request('key') }}">
                 <div class="input-group-append">
                 <span class="input-group-text">
                     <i class="la la-search"></i>

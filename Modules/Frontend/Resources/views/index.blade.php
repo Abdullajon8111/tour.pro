@@ -17,6 +17,9 @@
             @include('frontend::components.tour-card', compact('tour'))
         @endforeach
 
+        <div class="d-flex justify-content-center">
+            {{ $tours->withQueryString()->links() }}
+        </div>
     </div>
 
 @endsection

@@ -20,9 +20,10 @@ Route::redirect('admin/logout', '/');
 Route::get('language/{locale}', function ($locale) {
 
     if (in_array($locale, config('app.locales'))) {
+
         app()->setLocale($locale);
         session()->put('locale', $locale);
     }
 
     return redirect()->back();
-});
+})->name('language.locale');

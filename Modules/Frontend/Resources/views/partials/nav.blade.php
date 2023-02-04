@@ -18,11 +18,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        RU
+                        {{ Str::upper(app()->getLocale()) }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">UZ</a>
-                        <a class="dropdown-item" href="#">RU</a>
+                        <a class="dropdown-item" href="{{ route('language.locale', 'uz') }}">UZ</a>
+                        <a class="dropdown-item" href="{{ route('language.locale', 'ru') }}">RU</a>
                     </div>
                 </li>
 

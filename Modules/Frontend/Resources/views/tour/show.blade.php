@@ -1,5 +1,9 @@
 @extends('frontend::layouts.master')
 
+@section('head')
+    {!! seo()->for($tour) !!}
+@endsection
+
 @section('after_styles')
     <style>
         .banner {
@@ -43,7 +47,7 @@
 @section('content')
     <div class="banner d-flex">
         <div class="banner-mask"></div>
-        <div class="parallax-image" style="background-image: url('{{ asset('images/beautiful-sun-shining-across-mountains-1.jpg') }}')"></div>
+        <div class="parallax-image" style="background-image: url('{{ asset("storage/{$tour->banner_image}") }}')"></div>
         <div class="m-auto text-center text-white">
             <div class="d-none d-sm-none d-xl-block d-md-block d-lg-block banner-text">
                 <h1 class="banner-header-text display-2 font-weight-bold">{{ $tour->name }}</h1>

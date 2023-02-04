@@ -4,6 +4,8 @@
         @include('frontend::inc.head')
         <link href="{{ asset('packages/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('packages/select2-bootstrap-theme/dist/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+{{--        <link rel="stylesheet" href="{{ asset('packages/backpack/base/css/theme.css') }}">--}}
+        @yield('head')
     </head>
 <body class="app">
 
