@@ -26,4 +26,5 @@ Route::prefix('auth')->group(function () {
     Route::post('register/tour-agent', [RegisterController::class, 'tourAgent'])->name('register.tour-agent.post');
 
     Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
