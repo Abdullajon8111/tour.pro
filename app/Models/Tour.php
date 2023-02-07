@@ -22,6 +22,10 @@ class Tour extends Model
 
     const TIME_TYPE_ONE_TIME = 0;
     const TIME_TYPE_SEASONAL = 1;
+
+    const STATUS_PUBLISHED = 1;
+    const STATUS_UNDER_REVIEW = 0;
+
     protected $guarded = ['id'];
     protected $translatable = [
         'name', 'duration', 'age_limit', 'about',
@@ -42,12 +46,20 @@ class Tour extends Model
         ];
     }
 
+    public static function statuses()
+    {
+        return [
+            self::STATUS_UNDER_REVIEW => __('На рассмотрении'),
+            self::STATUS_PUBLISHED => __('Опубликовано')
+        ];
+    }
+
     public function getDynamicSEOData(): SEOData
     {
         return new SEOData(
-            $this->title,
-            $this->sub_title,
-            $this->user->name,
+            $this->title ?? '',
+            $this->sub_title ?? '',
+            $this->user->name ?? '',
             asset("storage/{$this->banner_image}")
         );
     }

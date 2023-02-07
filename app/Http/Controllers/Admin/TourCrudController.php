@@ -6,6 +6,7 @@ use App\Http\Requests\TourRequest;
 use App\Models\Role;
 use App\Models\Tag;
 use App\Models\Tour;
+use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -33,22 +34,35 @@ class TourCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('banner_image');
-        CRUD::column('duration');
-        CRUD::column('age_limit');
-        CRUD::column('country_code');
-        CRUD::column('time_type');
-        CRUD::column('start_time');
-        CRUD::column('end_time');
-        CRUD::column('program');
-        CRUD::column('hotels');
-        CRUD::column('price_description');
-        CRUD::column('price_one');
-        CRUD::column('price_two');
-        CRUD::column('price_family');
-        CRUD::column('images');
-        CRUD::column('region_id');
+        CRUD::column('name')->type('text')->label(__('Имя'))->limit(150);
+        CRUD::column('banner_image')->type('image')->label(__('изображение баннера'))->disk('uploads')->height('150px');
+        CRUD::column('status')->type('view')->label(__('статус'))->view('tour.column.status');
+
+        if (auth()->user()->hasRole(Role::ADMIN)) {
+            CRUD::column('user_id');
+            CRUD::column('region_id');
+
+            CRUD::addFilter([
+                'name' => 'user',
+                'type' => 'select2',
+                'label' => __('User')
+            ],
+                User::whereRelation('roles', 'name', '=', Role::AGENT)->pluck('name', 'id')->toArray(),
+                function ($value) {
+                    $this->crud->addClause('where', 'user_id', '=', $value);
+                }
+            );
+
+//            CRUD::
+        }
+
+        CRUD::addFilter([
+            'name' => 'status',
+            'label' => __('статус'),
+            'type' => 'dropdown'
+        ], Tour::statuses(), function ($value) {
+            $this->crud->addClause('where', 'status', $value);
+        });
     }
 
 
@@ -140,6 +154,7 @@ class TourCrudController extends CrudController
             Tour::created(function (Tour $tour) {
                 $agent = auth()->user()->tourAgent;
                 $tour->region_id = $agent->region_id ?? null;
+                $tour->status = Tour::STATUS_UNDER_REVIEW;
                 $tour->save();
             });
         }
@@ -153,5 +168,15 @@ class TourCrudController extends CrudController
     public function fetchTags()
     {
         return $this->fetch(Tag::class);
+    }
+
+    public function status(Tour $tour, int $status)
+    {
+        if (in_array($status, array_keys(Tour::statuses()))) {
+            $tour->status = $status;
+            $tour->save();
+        }
+
+        return back();
     }
 }

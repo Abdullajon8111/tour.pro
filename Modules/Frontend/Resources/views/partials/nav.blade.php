@@ -50,6 +50,13 @@
                             {{ auth()->user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            @hasanyrole(\App\Models\Role::ADMIN . '|' . \App\Models\Role::AGENT)
+                                <a class="dropdown-item" href="{{ route('backpack.dashboard') }}">
+                                    {{ __('панель управления') }}
+                                </a>
+                            @endif
+
                             <form action="{{ route('auth.logout') }}" method="post">
                                 @csrf
                                 <button type="submit" class="dropdown-item">{{ __('выйти') }}</button>

@@ -22,6 +22,7 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
     Route::crud('tour', 'TourCrudController');
+    Route::get('tour/{tour}/{status}/status', 'TourCrudController@status')->name('tour-crud.status');
 //    Route::crud('country', 'CountryCrudController');
     Route::crud('region', 'RegionCrudController');
     Route::crud('tag', 'TagCrudController');

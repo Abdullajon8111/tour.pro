@@ -19,6 +19,7 @@ class PageController extends Controller
         $regions = Region::all();
 
         $query = Tour::latest()
+            ->whereStatus(Tour::STATUS_PUBLISHED)
             ->when(request('key'), function (Builder $query, $key) {
                 $query->where(function (Builder $query) use ($key) {
                     $query->orWhereRelation('tags', 'name', 'like', "%{$key}%");
