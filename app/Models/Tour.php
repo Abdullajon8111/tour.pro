@@ -5,6 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -104,5 +105,29 @@ class Tour extends Model
         $destination_path = "tour/gallery-images";
 
         $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
+    }
+
+    public function scopeSearch(Builder $query)
+    {
+        return $query
+            ->latest()
+            ->where('status', Tour::STATUS_PUBLISHED)
+            ->when(request('key'), function (Builder $query, $key) {
+                $query->where(function (Builder $query) use ($key) {
+                    $query->orWhereRelation('tags', 'name', 'like', "%{$key}%");
+
+                    $query->orWhere('name', 'like', "%$key%");
+                    $query->orWhere('description', 'like', "%$key%");
+                    $query->orWhere('about', 'like', "%$key%");
+                    $query->orWhere('title', 'like', "%$key%");
+                    $query->orWhere('sub_title', 'like', "%$key%");
+                });
+            })
+            ->when(request('region'), function (Builder $query, $region) {
+                $query->where('region_id', $region);
+            })
+            ->when(request('country'), function (Builder $query, $country) {
+                $query->where('country_code', $country);
+            });
     }
 }
