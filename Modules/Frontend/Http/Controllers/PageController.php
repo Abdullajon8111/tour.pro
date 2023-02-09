@@ -39,4 +39,15 @@ class PageController extends Controller
 
         return view('frontend::index', compact('tours', 'countries', 'regions'));
     }
+
+    public function favorites()
+    {
+        $countries = Country::getCountries();
+        $regions = Region::all();
+        $tours = Tour::search()->whereHas('favorites', function (Builder $query) {
+            $query->where('user_id', auth()->id());
+        })->paginate(10);
+
+        return view('frontend::index', compact('tours', 'countries', 'regions'));
+    }
 }

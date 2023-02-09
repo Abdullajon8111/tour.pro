@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
@@ -107,6 +108,11 @@ class Tour extends Model
         $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
     }
 
+    public function hasFavorite(): bool
+    {
+        return auth()->check() and Favorite::whereTourId($this->id)->whereUserId(auth()->id())->exists();
+    }
+
     public function scopeSearch(Builder $query)
     {
         return $query
@@ -129,5 +135,10 @@ class Tour extends Model
             ->when(request('country'), function (Builder $query, $country) {
                 $query->where('country_code', $country);
             });
+    }
+
+    public function favorites(): HasMany
+    {
+        return $this->hasMany(Favorite::class);
     }
 }

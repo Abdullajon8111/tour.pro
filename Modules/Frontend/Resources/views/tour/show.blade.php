@@ -39,6 +39,10 @@
         .banner-text {
             text-shadow: 0 2px 2px rgb(0 0 0 / 90%);
         }
+
+        .nav-tabs .nav-link {
+            border-radius: 0;
+        }
     </style>
 @endsection
 

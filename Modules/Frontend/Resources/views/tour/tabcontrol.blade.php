@@ -171,6 +171,38 @@
     @if($tour->images)
         <li class="nav-item"><button class="nav-link" id="contact-tab" data-toggle="tab" href="#tab-7">{{ __('Фото') }}</button></li>
     @endif
+
+    @auth
+        <li class="nav-item ml-auto mr-0">
+            <button class="nav-link" id="favorites">
+                @if(!$tour->hasFavorite())
+                    <i class="la la-heart-o"></i>
+                    <i class="la la-heart text-danger" style="display: none"></i>
+                @else
+                    <i class="la la-heart-o" style="display: none"></i>
+                    <i class="la la-heart text-danger"></i>
+                @endif
+
+            </button>
+        </li>
+
+        @push('after_scripts')
+            <script>
+                $('#favorites').click(function () {
+                    let favorite = $(this);
+                    $.get('{{ route('frontend.tour.favorite', $tour) }}', function (response) {
+                        if (response == 1) {
+                            let i = favorite.children('i')
+                            i.toggle()
+
+
+                        }
+                    })
+                })
+            </script>
+        @endpush
+    @endauth
+
 </ul>
 
 <div class="tab-content shadow-sm" id="tab-content">
