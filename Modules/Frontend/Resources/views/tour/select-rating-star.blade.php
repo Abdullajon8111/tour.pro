@@ -1,53 +1,34 @@
 @push('after_styles')
     <style>
-        .rate {
-            float: left;
-            height: 46px;
-            padding: 0 10px;
+        .rating-box {
+            display: inline-block;
         }
-        .rate:not(:checked) > input {
-            position:absolute;
-            top:-9999px;
+        .rating-box .rating-container {
+            direction: rtl !important;
         }
-        .rate:not(:checked) > label {
-            float:right;
-            width:1em;
-            overflow:hidden;
-            white-space:nowrap;
-            cursor:pointer;
-            font-size:30px;
-            color: {{ isset($field['options']) ? ($field['options']['unchecked_color'] ?? '#ccc') : '#ccc' }};
+        .rating-box .rating-container label {
+            display: inline-block;
+            margin: 15px 0;
+            color: #d4d4d4;
+            cursor: pointer;
+            font-size: 2em;
+            transition: color 0.2s;
         }
-        .rate:not(:checked) > label:before {
-            content: '{{ isset($field['options']) ? ($field['options']['icon'] ?? '★') : '★' }} ';
+        .rating-box .rating-container input {
+            display: none;
         }
-        .rate > input:checked ~ label {
-            color: {{ isset($field['options']) ? ($field['options']['checked_color'] ?? '#ffc700') : '#ffc700' }};
-        }
-        .rate:not(:checked) > label:hover,
-        .rate:not(:checked) > label:hover ~ label {
-            color: #deb217;
-        }
-        .rate > input:checked + label:hover,
-        .rate > input:checked + label:hover ~ label,
-        .rate > input:checked ~ label:hover,
-        .rate > input:checked ~ label:hover ~ label,
-        .rate > label:hover ~ input:checked ~ label {
-            color: {{ isset($field['options']) ? ($field['options']['hover_color'] ?? '#c59b08') : '#c59b08' }};
+        .rating-box .rating-container label:hover, .rating-box .rating-container label:hover ~ label, .rating-box .rating-container input:checked ~ label {
+            color: gold;
         }
     </style>
 @endpush
 
-@php
-    $value = 0;
-    $field['count'] = 5;
-    $field['label'] = 5;
-    $field['name'] = 'rating';
-@endphp
-
-<div class="rate form-check">
-    @while ($field['count']--)
-        <input @include('crud::fields.inc.attributes') type="radio" id="star-{{ $field['name'].'-'.$field['count'] }}" name="{{$field['name']}}" value="{{ $field['count']+1 }}" {{ $field['count']+1 == $value ? 'checked' : '' }}/>
-        <label for="star-{{ $field['name'].'-'.$field['count'] }}" title="{{ $field['count']+1 }}">{{ $field['count'] }} stars</label>
-    @endwhile
+<div class="rating-box">
+    <div class="rating-container">
+        <input type="radio" name="rating" value="5" id="star-5" checked> <label for="star-5">&#9733;</label>
+        <input type="radio" name="rating" value="4" id="star-4"> <label for="star-4">&#9733;</label>
+        <input type="radio" name="rating" value="3" id="star-3"> <label for="star-3">&#9733;</label>
+        <input type="radio" name="rating" value="2" id="star-2"> <label for="star-2">&#9733;</label>
+        <input type="radio" name="rating" value="1" id="star-1"> <label for="star-1">&#9733;</label>
+    </div>
 </div>

@@ -261,7 +261,7 @@
 
     @if($tour->program)
         <div class="tab-pane fade" id="tab-2" role="tabpanel">
-            <ul class="timeline">
+            <ul class="timeline mb-0">
                 @foreach(json_decode($tour->program, true) as $program)
                     <li class="timeline-inverted">
                         <div class="timeline-badge">{{ $loop->index + 1 }}</div>
