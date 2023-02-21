@@ -29,8 +29,8 @@ Route::get('language/{locale}', function ($locale) {
 })->name('language.locale');
 
 //handle requests from payment system
-Route::any('/handle/{paysys}',function($paysys){
-    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
+Route::any('/callback/{paysys}',function($paysys){
+    return (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
 });
 
 //redirect to payment system or payment form
