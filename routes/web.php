@@ -30,7 +30,7 @@ Route::get('language/{locale}', function ($locale) {
 
 //handle requests from payment system
 Route::any('/callback/{pay_type}',function($pay_type){
-    return (new Goodoneuz\PayUz\PayUz)->driver($pay_type)->handle();
+    return response()->json((new Goodoneuz\PayUz\PayUz)->driver($pay_type)->handle());
 });
 
 //redirect to payment system or payment form
