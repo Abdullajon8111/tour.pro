@@ -42,3 +42,6 @@ Route::any('/pay/{pay_type}/{key}/{amount}',function($pay_type, $key, $amount){
         ->driver($pay_type)
         ->redirect($model, $amount, 860, $url);
 });
+
+
+

@@ -6,6 +6,14 @@
         <link href="{{ asset('packages/select2-bootstrap-theme/dist/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 {{--        <link rel="stylesheet" href="{{ asset('packages/backpack/base/css/theme.css') }}">--}}
         @yield('head')
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-D8WF9F6LVC"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-D8WF9F6LVC');
+        </script>
     </head>
 <body class="app">
 
