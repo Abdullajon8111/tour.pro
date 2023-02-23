@@ -51,6 +51,8 @@ class PageController extends Controller
             $query->where('user_id', auth()->id());
         })->paginate(10);
 
-        return view('frontend::index', compact('tours', 'countries', 'regions'));
+        $tags = Tag::withCount('tours')->orderBy('tours_count')->take(8)->get();
+
+        return view('frontend::index', compact('tours', 'countries', 'regions', 'tags'));
     }
 }
