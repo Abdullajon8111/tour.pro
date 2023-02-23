@@ -20,7 +20,6 @@ class PageController extends Controller
         $countries = Country::getCountries();
         $regions = Region::all();
         $tours = Tour::search()->paginate(10);
-
         $tags = Tag::withCount('tours')->orderBy('tours_count')->take(8)->get();
 
         return view('frontend::index', compact('tours', 'countries', 'regions', 'tags'));
@@ -39,8 +38,9 @@ class PageController extends Controller
         $countries = Country::getCountries();
         $regions = Region::all();
         $tours = Tour::search()->where('user_id', $user->id)->paginate(10);
+        $tags = Tag::withCount('tours')->orderBy('tours_count')->take(8)->get();
 
-        return view('frontend::index', compact('tours', 'countries', 'regions'));
+        return view('frontend::index', compact('tours', 'countries', 'regions', 'tags'));
     }
 
     public function favorites()
