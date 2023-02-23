@@ -1,4 +1,4 @@
-<div class="card shadow-sm mt-5">
+<div class="card shadow-sm mt-3">
     <div class="card-header py-4">
         <h4 class="text-center mb-0 font-weight-bold">{{ __('ОТЗЫВЫ ТУРИСТОВ') }}</h4>
     </div>

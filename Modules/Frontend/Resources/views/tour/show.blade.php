@@ -69,10 +69,8 @@
 
     <div class="container" style="margin-top: -150px;">
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-9 mb-3">
                 @include('frontend::tour.tabcontrol')
-
-                @include('frontend::tour.comments')
             </div>
 
             <div class="col-lg-3">
@@ -128,6 +126,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-9">
+                @include('frontend::tour.comments')
             </div>
         </div>
     </div>
