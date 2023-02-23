@@ -111,7 +111,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <button class="btn btn-outline-primary btn-tel btn-block mb-1">{{ __('Телефон') }}</button>
                                 <a href="tel:{{ $agent->phone }}" class="btn btn-outline-primary btn-block mb-1" style="display: none">{{ $agent->phone }}</a>
