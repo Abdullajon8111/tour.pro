@@ -28,7 +28,7 @@
 @endpush
 
 <div class="row no-gutters border bg-white rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative grid-divider">
-    <div class="col d-none d-lg-block">
+    <div class="col-md-4 d-lg-block">
         <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}">
 {{--            <img height="250"--}}
 {{--                 width="297"--}}
@@ -43,7 +43,7 @@
         </a>
     </div>
 
-    <div class="col p-4 d-flex flex-column position-static">
+    <div class="col-md-4 p-4 d-flex flex-column position-static">
         <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}">
             <h4 class="mb-0 font-weight-bold">{{ $tour->name }}</h4>
         </a>
@@ -75,7 +75,7 @@
 
     </div>
 
-    <div class="col p-4 d-flex flex-column position-static vr">
+    <div class="col-md-4 p-4 d-flex flex-column position-static vr">
         <div class="my-auto text-center">
             @if($tour->price_one)
                 <h4 class="font-weight-bold text-success">{{ number_format($tour->price_one) }} {{ __('UZS') }}</h4>

@@ -6,11 +6,13 @@
             <h3 class="font-weight-bold">{{ __('Выберите направление') }}</h3>
         </div>
 
-        @include('frontend::home.search-form')
+        <div class="card card-body bg-secondary">
+            @include('frontend::home.search-form')
+        </div>
 
         <div class="form-group mt-3">
             @foreach($tags as $tag)
-                <a href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}" class="badge py-2 px-3 badge-primary">
+                <a href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}" class="badge py-2 px-3 badge-primary mb-1">
                     {{ $tag->name }}
                 </a>
             @endforeach
