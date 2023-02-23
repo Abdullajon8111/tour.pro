@@ -29,6 +29,7 @@ class PageController extends Controller
     {
         abort_if(!isset($tour->user->tourAgent), 404);
         $agent = $tour->user->tourAgent;
+        $tour->load('tags');
 
         return view('frontend::tour.show', compact('tour', 'agent'));
     }

@@ -10,7 +10,7 @@
 
         <div class="form-group mt-3">
             @foreach($tags as $tag)
-                <a href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}" class="badge badge-primary">
+                <a href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}" class="badge py-2 px-3 badge-primary">
                     {{ $tag->name }}
                 </a>
             @endforeach

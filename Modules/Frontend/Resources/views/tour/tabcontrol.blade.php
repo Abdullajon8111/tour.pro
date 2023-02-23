@@ -257,6 +257,14 @@
         </div>
 
         <div class="p-4">
+            @foreach($tour->tags as $tag)
+                <a href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}" class="badge py-2 px-3 badge-primary">
+                    {{ $tag->name }}
+                </a>
+            @endforeach
+        </div>
+
+        <div class="p-4">
             {!! $tour->description !!}
         </div>
     </div>

@@ -127,6 +127,7 @@ class Tour extends Model
     {
         return $query
             ->with('tags')
+            ->has('user')
             ->latest()
             ->where('status', Tour::STATUS_PUBLISHED)
             ->when(request('key'), function (Builder $query, $key) {

@@ -50,14 +50,14 @@
         <p class="card-text mb-auto mt-3">{{ $tour->title }}</p>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-8">
                 <div class="bg-secondary rounded px-2 p-1">
                     <i class="la la-clock mr-2 text-danger"></i>
                     <span>{{ $tour->duration }}</span>
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-4">
                 <div class="bg-secondary rounded px-2 p-1">
                     <i class="la la-user mr-2 text-danger"></i>
                     <span>{{ $tour->age_limit }}</span>
