@@ -34,6 +34,10 @@ class TourCrudController extends CrudController
 
     protected function setupListOperation()
     {
+        if (auth()->user()->hasRole(Role::AGENT)) {
+            CRUD::addClause('where', 'user_id', '=', auth()->id());
+        }
+
         CRUD::column('name')->type('text')->label(__('Имя'))->limit(150);
         CRUD::column('banner_image')->type('image')->label(__('изображение баннера'))->disk('uploads')->height('150px');
         CRUD::column('status')->type('view')->label(__('статус'))->view('tour.column.status');
