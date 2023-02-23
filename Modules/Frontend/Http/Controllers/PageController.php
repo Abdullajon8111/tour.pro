@@ -4,6 +4,7 @@ namespace Modules\Frontend\Http\Controllers;
 
 use App\Models\Country;
 use App\Models\Region;
+use App\Models\Tag;
 use App\Models\Tour;
 use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
@@ -20,7 +21,9 @@ class PageController extends Controller
         $regions = Region::all();
         $tours = Tour::search()->paginate(10);
 
-        return view('frontend::index', compact('tours', 'countries', 'regions'));
+        $tags = Tag::withCount('tours')->orderBy('tours_count')->take(8)->get();
+
+        return view('frontend::index', compact('tours', 'countries', 'regions', 'tags'));
     }
 
     public function show(Tour $tour)

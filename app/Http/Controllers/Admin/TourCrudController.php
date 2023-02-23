@@ -138,17 +138,12 @@ class TourCrudController extends CrudController
         $this->crud->addField([
             'label' => 'Tags',
             'type' => 'relationship',
-            'name' => 'tags', // the method that defines the relationship in your Model
-            'entity' => 'tags', // the method that defines the relationship in your Model
-            'attribute' => 'name', // foreign key attribute that is shown to user
-            'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+            'name' => 'tags',
+            'entity' => 'tags',
+            'attribute' => 'name',
+            'pivot' => true,
             'inline_create' => ['entity' => 'tag'],
-            'ajax' => true,
         ]);
-
-        Tour::creating(function (Tour $tour) {
-            $tour->user_id = auth()->id();
-        });
 
         if (auth()->user()->hasRole(Role::ADMIN)) {
             CRUD::field('region_id');

@@ -57,11 +57,19 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-6">
                 <div class="bg-secondary rounded px-2 p-1">
                     <i class="la la-user mr-2 text-danger"></i>
                     <span>{{ $tour->age_limit }}</span>
                 </div>
+            </div>
+
+            <div class="col-12">
+                @foreach($tour->tags as $tag)
+                    <a href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}" class="badge badge-primary">
+                        {{ $tag->name }}
+                    </a>
+                @endforeach
             </div>
         </div>
 
@@ -69,7 +77,7 @@
 
     <div class="col p-4 d-flex flex-column position-static vr">
         <div class="my-auto text-center">
-            <h4 class="font-weight-bold text-success">{{ number_format($tour->price_one) }}</h4>
+            <h4 class="font-weight-bold text-success">{{ $tour->price_one }}</h4>
             <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}" class="btn btn-info rounded">{{ __('Подробнее') }}</a>
         </div>
 

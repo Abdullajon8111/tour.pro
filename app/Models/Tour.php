@@ -54,6 +54,7 @@ class Tour extends Model
 
         static::creating(function (self $model) {
             $model->status = self::STATUS_UNDER_REVIEW;
+            $model->user_id = auth()->id();
         });
     }
 
@@ -125,6 +126,7 @@ class Tour extends Model
     public function scopeSearch(Builder $query)
     {
         return $query
+            ->with('tags')
             ->latest()
             ->where('status', Tour::STATUS_PUBLISHED)
             ->when(request('key'), function (Builder $query, $key) {
@@ -143,6 +145,11 @@ class Tour extends Model
             })
             ->when(request('country'), function (Builder $query, $country) {
                 $query->where('country_code', $country);
+            })
+            ->when(request('tag'), function (Builder $query, $tag) {
+                $query->whereHas('tags', function (Builder $q) use ($tag) {
+                    $q->where('slug', $tag);
+                });
             });
     }
 

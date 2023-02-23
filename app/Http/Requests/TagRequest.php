@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TagRequest extends FormRequest
 {
@@ -14,7 +15,7 @@ class TagRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:2|max:255'
+            'name' => ['required', 'min:4', Rule::unique('tags','name')]
         ];
     }
 
