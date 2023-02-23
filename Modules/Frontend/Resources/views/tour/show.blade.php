@@ -86,7 +86,7 @@
                 @if($tour->price_one)
                     <div class="card border-0">
                         <div class="card-header bg-primary text-white">
-                            <h3 class="m-0 font-weight-bold text-center">{{ $tour->price_one }}</h3>
+                            <h3 class="m-0 font-weight-bold text-center">{{ number_format($tour->price_one) }} {{ __('UZS') }}</h3>
                         </div>
 
 

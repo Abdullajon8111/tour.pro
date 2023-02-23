@@ -77,7 +77,10 @@
 
     <div class="col p-4 d-flex flex-column position-static vr">
         <div class="my-auto text-center">
-            <h4 class="font-weight-bold text-success">{{ $tour->price_one }}</h4>
+            @if($tour->price_one)
+                <h4 class="font-weight-bold text-success">{{ number_format($tour->price_one) }} {{ __('UZS') }}</h4>
+            @endif
+
             <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}" class="btn btn-info rounded">{{ __('Подробнее') }}</a>
         </div>
 
