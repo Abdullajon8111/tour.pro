@@ -44,6 +44,7 @@ class PageController extends Controller
     }
 
     public function favorites()
+
     {
         $countries = Country::getCountries();
         $regions = Region::all();
