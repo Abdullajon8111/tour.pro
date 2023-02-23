@@ -11,27 +11,27 @@
                     <div class="col-lg-5">
                         <div class="form-group">
                             <label>{{ __('логин') }}<sup class="text-danger">*</sup></label>
-                            <input name="login" type="text" class="form-control" placeholder="{{ __('логин') }}">
+                            <input name="login" type="text" class="form-control" placeholder="{{ __('логин') }}" value="{{ old('login') }}">
                             @error('login')<span class="text-danger">{{ $errors->first('login') }}</span>@enderror
                         </div>
 
                         <div class="form-group">
                             <label>{{ __('email') }}</label>
-                            <input name="email" type="email" class="form-control" placeholder="{{ __('email') }}">
+                            <input name="email" type="email" class="form-control" placeholder="{{ __('email') }}" value="{{ old('email') }}">
                             @error('email')<span class="text-danger">{{ $errors->first('email') }}</span>@enderror
                         </div>
 
                         <div class="form-group">
                             <label>{{ __('пароль') }}<sup class="text-danger">*</sup></label>
                             <input name="password" type="password" class="form-control"
-                                   placeholder="{{ __('пароль') }}">
+                                   placeholder="{{ __('пароль') }}" >
                             @error('password')<span class="text-danger">{{ $errors->first('password') }}</span>@enderror
                         </div>
 
                         <div class="form-group">
                             <label>{{ __('подтвердить пароль') }}<sup class="text-danger">*</sup></label>
                             <input name="password_confirmation" type="password" class="form-control"
-                                   placeholder="{{ __('подтвердить пароль') }}">
+                                   placeholder="{{ __('подтвердить пароль') }}" >
                             @error('password_confirmation')<span
                                 class="text-danger">{{ $errors->first('password_confirmation') }}</span>@enderror
                         </div>
@@ -41,19 +41,19 @@
                     <div class="col-lg-7">
                         <div class="form-group">
                             <label>{{ __('название') }}<sup class="text-danger">*</sup></label>
-                            <input name="name" type="text" class="form-control" placeholder="{{ __('название') }}">
+                            <input name="name" type="text" class="form-control" placeholder="{{ __('название') }}" value="{{ old('name') }}">
                             @error('name')<span class="text-danger">{{ $errors->first('name') }}</span>@enderror
                         </div>
 
                         <div class="form-group">
                             <label>{{ __('телефон') }}<sup class="text-danger">*</sup></label>
-                            <input name="phone" type="text" class="form-control" placeholder="{{ __('телефон') }}">
+                            <input name="phone" type="text" class="form-control" placeholder="{{ __('телефон') }}" value="{{ old('phone') }}">
                             @error('phone')<span class="text-danger">{{ $errors->first('phone') }}</span>@enderror
                         </div>
 
                         <div class="form-group">
                             <label>{{ __('телефон') }} 2</label>
-                            <input name="phone2" type="text" class="form-control" placeholder="{{ __('телефон') }} 2">
+                            <input name="phone2" type="text" class="form-control" placeholder="{{ __('телефон') }} 2" value="{{ old('phone2') }}">
                             @error('phone2')<span class="text-danger">{{ $errors->first('phone2') }}</span>@enderror
                         </div>
 
@@ -61,7 +61,7 @@
                             <label>{{ __('регион') }}</label>
                             <select class="custom-control custom-select" name="region_id">
                                 @foreach(\App\Models\Region::all() as $region)
-                                    <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                    <option value="{{ $region->id }}" {{ $region->id == old('region_id') ? 'selected' : '' }}>{{ $region->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -91,7 +91,7 @@
 
                     <div class="form-group col-lg-7">
                         <label>{{ __('описание') }}</label>
-                        <textarea rows="10" name="description" type="text" class="form-control" placeholder="{{ __('описание') }}"></textarea>
+                        <textarea rows="10" name="description" type="text" class="form-control" placeholder="{{ __('описание') }}">{{ old('description') }}</textarea>
                         @error('description')<span class="text-danger">{{ $errors->first('description') }}</span>@enderror
                     </div>
 

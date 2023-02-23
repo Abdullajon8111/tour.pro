@@ -48,6 +48,15 @@ class Tour extends Model
         ];
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function (self $model) {
+            $model->status = self::STATUS_UNDER_REVIEW;
+        });
+    }
+
     public static function statuses()
     {
         return [
