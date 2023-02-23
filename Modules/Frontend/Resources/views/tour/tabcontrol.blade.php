@@ -249,7 +249,7 @@
                             @endif
                         </h6>
                         <h6 class="text-black-50">
-                            {{ \App\Models\Tour::time_types()[$tour->time_type] }}
+                            {{ \App\Models\Tour::time_types()[$tour->time_type] ?? '' }}
                         </h6>
                     </div>
                 </div>
