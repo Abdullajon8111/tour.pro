@@ -2,14 +2,21 @@
 @php
     $field['extra_plugins'] = isset($field['extra_plugins']) ? implode(',', $field['extra_plugins']) : "embed,widget";
 
+    if (isset($field['attributes']['placeholder'])) {
+        $field['extra_plugins'] .= ',editorplaceholder';
+    }
+
     $defaultOptions = [
         // "filebrowserBrowseUrl" => backpack_url('elfinder/ckeditor'),
         "extraPlugins" => $field['extra_plugins'],
         "embed_provider" => "//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}",
-
         'filebrowserUploadUrl' => route('file.upload', ['_token' => csrf_token() ]),
         'filebrowserUploadMethod' => 'form'
     ];
+
+    if (isset($field['attributes']['placeholder'])) {
+        $defaultOptions['editorplaceholder'] = $field['attributes']['placeholder'];
+    }
 
     $field['options'] = array_merge($defaultOptions, $field['options'] ?? []);
 @endphp

@@ -74,13 +74,13 @@ class TourCrudController extends CrudController
     {
         CRUD::setValidation(TourRequest::class);
 
-        CRUD::field('name')->type('text')->label(__('Имя'))->tab(__('Описание'));
-        CRUD::field('title')->type('text')->label(__('Заголовок'))->tab(__('Описание'));
-        CRUD::field('sub_title')->type('text')->label(__('Подзаголовок'))->tab(__('Описание'));
-        CRUD::field('description')->type('ckeditor')->label(__('Описание'))->tab(__('Описание'));
+        CRUD::field('name')->type('text')->label(__('Имя'))->tab(__('Описание'))->attributes(['placeholder' => __('Шри Ланка – Прямой перелет!')]);
+        CRUD::field('title')->type('text')->label(__('Заголовок'))->tab(__('Описание'))->attributes(['placeholder' => __('Экзотический тур на Шри Ланку, прямой перелет')]);
+        CRUD::field('sub_title')->type('text')->label(__('Подзаголовок'))->tab(__('Описание'))->attributes(['placeholder' => __('Прямой перелет на Шри — Ланку 2023 | Отдых в Индии | Курорты Шри — Ланки')]);
+        CRUD::field('description')->type('ckeditor')->label(__('Описание'))->tab(__('Описание'))->attributes(['placeholder' => __('В стоимость включено: Авиаперелет Ташкент – Шри Ланка – ТашкентГрупповой трансфер аэропорт – отель – аэропортПроживание в отелях выбранной категорииПитание – завтракиСтраховкаДополнительно оплачивается:Услуги фирмы – 200 000 сумОформление визы заранее 45$ c человека ( по Гос курсу на день оплаты)')]);
         CRUD::field('banner_image')->type('upload')->upload(true)->disk('uploads')->label(__('Изображение баннера'))->tab(__('Описание'));
-        CRUD::field('duration')->type('text')->label(__('Продолжительность'))->tab(__('Описание'));
-        CRUD::field('age_limit')->type('text')->label(__('Возрастное ограничение'))->tab(__('Описание'));
+        CRUD::field('duration')->type('text')->label(__('Продолжительность'))->tab(__('Описание'))->attributes(['placeholder' => __('От 7 до 14 дней')]);
+        CRUD::field('age_limit')->type('text')->label(__('Возрастное ограничение'))->tab(__('Описание'))->attributes(['placeholder' => __('0+')]);
 
         CRUD::addField([
             'name' => 'country_code',
@@ -110,28 +110,35 @@ class TourCrudController extends CrudController
                 [
                     'name' => 'title',
                     'label' => __('Заголовок'),
-                    'type' => 'text'
+                    'type' => 'text',
+                    'attributes' => [
+                        'placeholder' => __('День 1')
+                    ]
                 ],
                 [
                     'name' => 'description',
                     'type' => 'ckeditor',
-                    'label' => __('Описание')
+                    'label' => __('Описание'),
+                    'attributes' => [
+                        'placeholder' => __('Прилёт в Хамбантона, трансфер в отель')
+                    ]
+
                 ]
             ],
             'new_item_label'  => __('backpack::crud.add'),
             'tab' => __('Программа'),
         ]);
 
-        CRUD::field('about')->type('ckeditor')->label(__('О курорте'))->tab(__('О курорте'));
-        CRUD::field('hotels')->type('ckeditor')->label(__('Отели'))->tab(__('Отели'));
+        CRUD::field('about')->type('ckeditor')->label(__('О курорте'))->tab(__('О курорте'))->attributes(['placeholder' => __('Стиль отдыха на Шри-Ланке можно вкратце определить так: подальше от шума и суеты, поближе к морю и природе. Вряд ли в мире найдется более «неторопливая» страна, чем Шри-Ланка: здесь никто никуда не спешит, все наслаждаются жизнью — в том числе и обслуживающий персонал в отелях (к топовым заведениям, правда, не относится — там все бегают в мыле, чтобы ублажить постояльцев). Большинство достопримечательностей на Шри-Ланке природные, точно так же, как и большинство развлечений. Шумные дискотеки и дым коромыслом до утра здесь не в фаворе, а вот пикники на природе, рыбалка или барбекю на пляже — сколько угодно. Ну и дайвинг, само собой. Чем Шри-Ланка не может порадовать, так это близостью к нашей необъятной: перелет сюда длительный.')]);
+        CRUD::field('hotels')->type('ckeditor')->label(__('Отели'))->tab(__('Отели'))->attributes(['placeholder' => __('CORAL SANDS HOTEL LUB KOGGALA VILLAGE 4* HERITANCE AHUNGALLA 5* Так же имеются другие отели под индивидуальный расчет')]);
 
         // Цена
-        CRUD::field('price_description')->type('ckeditor')->label(__('Описание цены'))->tab(__('Цена'));
-        CRUD::field('price_one')->type('number')->label(__('Цена на человека'))->tab(__('Цена'));
-        CRUD::field('price_two')->type('number')->label(__('Цена указана за двоих'))->tab(__('Цена'));
-        CRUD::field('price_family')->type('number')->label(__('Цена семейного платежа'))->tab(__('Цена'));
+        CRUD::field('price_description')->type('ckeditor')->label(__('Описание цены'))->tab(__('Цена'))->attributes(['placeholder' => __('Стоимость тура на 7 дней при проживании в отелях 3*  : В двухместном номере с человека – от 15,162,000 сум Стоимость тура при проживании в отеле 4*: В двухместном номере с человека – от 16,131,000 сум Стоимость тура при проживании в отеле 5*: В двухместном номере с  человека –от 16,880,000 сум')]);
+        CRUD::field('price_one')->type('number')->label(__('Цена на человека'))->tab(__('Цена'))->attributes(['placeholder' => __('15,162,000 сум')]);
+        CRUD::field('price_two')->type('number')->label(__('Цена указана за двоих'))->tab(__('Цена'))->attributes(['placeholder' => __('16,131,000 сум')]);
+        CRUD::field('price_family')->type('number')->label(__('Цена семейного платежа'))->tab(__('Цена'))->attributes(['placeholder' => __('16,880,000 сум')]);
 
-        CRUD::field('visa')->type('ckeditor')->label('Виза')->label(__('Виза'))->tab(__('Виза'));
+        CRUD::field('visa')->type('ckeditor')->label('Виза')->label(__('Виза'))->tab(__('Виза'))->attributes(['placeholder' => __('Отсканированная био страница паспорта с фотографией и деталями.')]);
 
         CRUD::field('images')->type('upload_multiple')->disk('uploads')->label(__('Галерея'))->tab(__('Галерея'));
 
