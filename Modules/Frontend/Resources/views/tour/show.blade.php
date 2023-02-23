@@ -85,7 +85,7 @@
 
                 <div class="card border-0">
                     <div class="card-header bg-primary text-white">
-                        <h3 class="m-0 font-weight-bold text-center">15 162 000 UZS</h3>
+                        <h3 class="m-0 font-weight-bold text-center">{{ $tour->price_one }} {{ __('UZS') }}</h3>
                     </div>
 
                     <div class="card-body">
