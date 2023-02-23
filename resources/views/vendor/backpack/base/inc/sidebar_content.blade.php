@@ -15,6 +15,8 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('tag') }}'><i class='nav-icon la la-question'></i> Tags</a></li>
 
 <hr class="w-100">
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('log') }}'><i class='nav-icon la la-terminal'></i> Logs</a></li>
+<hr class="w-100">
 @endrole
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('tour') }}'><i class='nav-icon la la-plane'></i> {{ __('Туры') }}</a></li>

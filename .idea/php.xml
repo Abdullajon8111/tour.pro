@@ -150,6 +150,7 @@
       <path value="$PROJECT_DIR$/vendor/ralphjsmit/laravel-seo" />
       <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
       <path value="$PROJECT_DIR$/vendor/goodoneuz/pay-uz" />
+      <path value="$PROJECT_DIR$/vendor/backpack/logmanager" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
