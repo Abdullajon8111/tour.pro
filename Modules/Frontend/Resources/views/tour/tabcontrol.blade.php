@@ -324,6 +324,9 @@
                         });
 
                         this.element.append(overflow_tab_action);
+
+                        if (!$('.favorite-item').length)
+                            overflow_tab_action.addClass('ml-auto')
                     }
 
                     this.openOverflowDropdown();
