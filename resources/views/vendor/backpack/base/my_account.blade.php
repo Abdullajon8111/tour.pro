@@ -72,7 +72,7 @@
 
                             <div class="col-md-4 form-group">
                                 @php
-                                    $label = config('backpack.base.authentication_column_name');
+                                    $label = __(config('backpack.base.authentication_column_name'));
                                     $field = backpack_authentication_column();
                                 @endphp
                                 <label class="required">{{ $label }}</label>
