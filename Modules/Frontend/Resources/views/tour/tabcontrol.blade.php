@@ -238,12 +238,14 @@
                     </div>
                     <div class="col-8">
                         <h6 class="font-weight-bold">
-                            @if($tour->time_type == \App\Models\Tour::TIME_TYPE_SEASONAL)
-                                {{ $tour->start_time->getTranslatedMonthName() }}
-                                -
-                                {{ $tour->end_time->getTranslatedMonthName() }}
-                            @else
-                                {{ $tour->start_time->format('d.m.Y') }}-{{ $tour->end_time->format('d.m.Y') }}
+                            @if($tour->start_time and $tour->end_time)
+                                @if($tour->time_type == \App\Models\Tour::TIME_TYPE_SEASONAL)
+                                    {{ $tour->start_time->getTranslatedMonthName() }}
+                                    -
+                                    {{ $tour->end_time->getTranslatedMonthName() }}
+                                @else
+                                    {{ $tour->start_time->format('d.m.Y') }}-{{ $tour->end_time->format('d.m.Y') }}
+                                @endif
                             @endif
                         </h6>
                         <h6 class="text-black-50">
