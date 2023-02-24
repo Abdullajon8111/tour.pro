@@ -24,7 +24,7 @@
         @yield('content')
     </div>
 
-    <footer class="app-footer sticky-footer">
+    <footer class="app-footer">
         @include('frontend::inc.footer')
     </footer>
 
