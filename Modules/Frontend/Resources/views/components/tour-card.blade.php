@@ -81,7 +81,7 @@
                 <h4 class="font-weight-bold text-success">{{ number_format($tour->price_one) }} {{ __('UZS') }}</h4>
             @endif
 
-            <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}" class="btn btn-info rounded" {{ $isAdmin ? 'target="_blank"' : '' }}>
+            <a href="{{ route('frontend.page.show', ['tour' => $tour]) }}" class="btn btn-info rounded" {{ isset($isAdmin) ? 'target="_blank"' : '' }}>
                 {{ __('Подробнее') }}
             </a>
         </div>
