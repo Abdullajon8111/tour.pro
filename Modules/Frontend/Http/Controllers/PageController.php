@@ -4,6 +4,7 @@ namespace Modules\Frontend\Http\Controllers;
 
 use App\Models\Country;
 use App\Models\Region;
+use App\Models\Role;
 use App\Models\Tag;
 use App\Models\Tour;
 use App\Models\User;
@@ -27,7 +28,14 @@ class PageController extends Controller
 
     public function show(Tour $tour)
     {
-        abort_if(!isset($tour->user->tourAgent), 404);
+        $check = (!isset($tour->user->tourAgent)) ||
+            (
+                $tour->status == Tour::STATUS_UNDER_REVIEW and
+                !auth()->user()->hasRole(Role::ADMIN)
+            );
+
+        abort_if($check, 404);
+
         $agent = $tour->user->tourAgent;
         $tour->load('tags');
 

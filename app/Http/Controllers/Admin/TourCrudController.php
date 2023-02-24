@@ -29,6 +29,8 @@ class TourCrudController extends CrudController
         CRUD::setModel(\App\Models\Tour::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/tour');
         CRUD::setEntityNameStrings('', __('Туры'));
+
+        CRUD::setShowView('tour.show');
     }
 
 
