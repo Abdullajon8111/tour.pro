@@ -24,9 +24,9 @@
         @yield('content')
     </div>
 
-{{--    <footer class="app-footer sticky-footer">--}}
-{{--        @include('frontend::inc.footer')--}}
-{{--    </footer>--}}
+    <footer class="app-footer sticky-footer">
+        @include('frontend::inc.footer')
+    </footer>
 
     @yield('before_scripts')
     @stack('before_scripts')
