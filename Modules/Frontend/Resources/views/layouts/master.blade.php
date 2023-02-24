@@ -5,6 +5,7 @@
         <link href="{{ asset('packages/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('packages/select2-bootstrap-theme/dist/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 {{--        <link rel="stylesheet" href="{{ asset('packages/backpack/base/css/theme.css') }}">--}}
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
         @yield('head')
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-D8WF9F6LVC"></script>
