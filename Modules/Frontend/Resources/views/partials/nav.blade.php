@@ -15,6 +15,21 @@
                 </li>
             </ul>
             <ul class="navbar-nav">
+                @php
+                    $tags = \App\Models\Tag::withCount('tours')->orderBy('tours_count')->take(3)->get();
+                @endphp
+
+                @foreach($tags as $tag)
+                    <li class="nav-item">
+                        <a class="nav-link text-warning" href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}">
+                            @if($loop->index == 0)
+                                <i class="la la-fire"></i>
+                            @endif
+                            {{ $tag->name }}
+                        </a>
+                    </li>
+                @endforeach
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
