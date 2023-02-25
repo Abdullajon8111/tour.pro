@@ -16,7 +16,11 @@ class TourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:5|max:255'
+            'name' => 'required|min:5|max:255',
+            'age_limit' => 'required',
+            'duration' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required'
         ];
     }
 

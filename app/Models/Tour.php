@@ -100,6 +100,11 @@ class Tour extends Model
         return $this->belongsToMany(Tag::class, 'tour_tag');
     }
 
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(TourGroupType::class, 'group_type');
+    }
+
     public function setBannerImageAttribute($value)
     {
         $attribute_name = "banner_image";
@@ -127,6 +132,7 @@ class Tour extends Model
     {
         return $query
             ->with('tags')
+            ->with('group')
             ->has('user')
             ->latest()
             ->where('status', Tour::STATUS_PUBLISHED)

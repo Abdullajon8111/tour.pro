@@ -474,6 +474,13 @@
                     <div class="col-8">
                         <h6 class="font-weight-bold">{{ $tour->age_limit }}</h6>
                         <h6 class="text-black-50">{{ __('Возраст') }}</h6>
+                        @if($tour->group_type)
+                            <hr class="w-100">
+                            <h6 class="text-muted font-weight-bold"> {{ $tour->group->name }} </h6>
+                            @if($tour->group_people_number)
+                                <h6 class="text-muted font-sm font-weight-bold"> {{ __('Количество людей') }}: {{ $tour->group_people_number ?? 1 }} </h6>
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>

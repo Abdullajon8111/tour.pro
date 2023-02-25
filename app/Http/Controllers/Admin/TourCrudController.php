@@ -154,6 +154,9 @@ class TourCrudController extends CrudController
             'inline_create' => ['entity' => 'tag'],
         ]);
 
+        CRUD::field('group')->label(__('Тип'))->tab('Группа');
+        CRUD::field('group_people_number')->label(__('Число'))->type('number')->tab('Группа');
+
         if (auth()->user()->hasRole(Role::ADMIN)) {
             CRUD::field('region_id');
         }
