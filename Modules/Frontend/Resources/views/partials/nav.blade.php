@@ -19,16 +19,18 @@
                     $tags = \App\Models\Tag::withCount('tours')->orderBy('tours_count')->take(3)->get();
                 @endphp
 
+                <div class="btn-group bg-warning rounded-sm" role="group">
                 @foreach($tags as $tag)
-                    <li class="nav-item">
-                        <a class="nav-link text-warning" href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}">
+                    <li class="nav-item ">
+                        <a class="nav-link " href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}">
                             @if($loop->index == 0)
-                                <i class="la la-fire"></i>
+                                <i class="la la-fire text-danger"></i>
                             @endif
                             {{ $tag->name }}
                         </a>
                     </li>
                 @endforeach
+                </div>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
