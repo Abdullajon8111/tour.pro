@@ -64,9 +64,9 @@
                 </div>
             </div>
 
-            <div class="col-12 mt-3">
+            <div class="col-12 mt-2">
                 @foreach($tour->tags as $tag)
-                    <a href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}" class="badge badge-primary ml-0 p-2">
+                    <a href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}" class="badge badge-primary ml-0 mt-1 p-2">
                         {{ $tag->name }}
                     </a>
                 @endforeach
