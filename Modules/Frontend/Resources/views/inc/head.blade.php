@@ -21,6 +21,8 @@
         @endforeach
     @endif
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
     @yield('after_styles')
     @stack('after_styles')
 
