@@ -23,7 +23,9 @@ class PageController extends Controller
         $tours = Tour::search()->paginate(10);
         $tags = Tag::withCount('tours')->orderBy('tours_count')->take(8)->get();
 
-        return view('frontend::index', compact('tours', 'countries', 'regions', 'tags'));
+        $sliderTours = Tour::latest()->take(4)->get();
+
+        return view('frontend::index', compact('tours', 'countries', 'regions', 'tags', 'sliderTours'));
     }
 
     public function show(Tour $tour)

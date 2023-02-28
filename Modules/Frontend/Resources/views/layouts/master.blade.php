@@ -31,7 +31,7 @@
     @yield('before_scripts')
     @stack('before_scripts')
 
-    @include(backpack_view('inc.scripts'))
+    @include('frontend::inc.scripts')
 
     @yield('after_scripts')
     @stack('after_scripts')
