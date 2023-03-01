@@ -24,7 +24,7 @@
         @yield('content')
     </div>
 
-    <footer class="app-footer">
+    <footer class="app-footer p-0 bg-gray-dark">
         @include('frontend::inc.footer')
     </footer>
 

@@ -28,4 +28,5 @@ Route::group([
     Route::crud('tag', 'TagCrudController');
     Route::crud('appeal', 'AppealCrudController');
     Route::crud('comment', 'CommentCrudController');
+    Route::crud('tour-group-type', 'TourGroupTypeCrudController');
 }); // this should be the absolute last line of this file
