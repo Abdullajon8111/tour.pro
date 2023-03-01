@@ -19,18 +19,26 @@
                     $tags = \App\Models\Tag::withCount('tours')->orderBy('tours_count')->take(3)->get();
                 @endphp
 
-                <div class="btn-group bg-warning rounded-sm" role="group">
-                @foreach($tags as $tag)
-                    <li class="nav-item ">
-                        <a class="nav-link " href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}">
-                            @if($loop->index == 0)
-                                <i class="la la-fire text-danger"></i>
-                            @endif
-                            {{ $tag->name }}
-                        </a>
-                    </li>
-                @endforeach
-                </div>
+{{--                @if(count($tags))--}}
+{{--                    <li class="nav-item dropdown">--}}
+{{--                        <a class="nav-link dropdown-toggle" href="#" id="hotTags" role="button" data-toggle="dropdown"--}}
+{{--                           aria-haspopup="true" aria-expanded="false">--}}
+{{--                            {{ __('') }}--}}
+{{--                        </a>--}}
+{{--                        <div class="dropdown-menu">--}}
+{{--                            <a class="dropdown-item" href="{{ route('language.locale', 'uz') }}">UZ</a>--}}
+{{--                            <a class="dropdown-item" href="{{ route('language.locale', 'ru') }}">RU</a>--}}
+{{--                        </div>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
+
+{{--                @foreach($tags as $tag)--}}
+{{--                    <li class="nav-item ">--}}
+{{--                        <a class="nav-link " href="{{ route('frontend.page.index') }}?tag={{$tag->slug}}">--}}
+{{--                            {{ $tag->name }}--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                @endforeach--}}
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

@@ -153,6 +153,11 @@ class Tour extends Model
             ->when(request('country'), function (Builder $query, $country) {
                 $query->where('country_code', $country);
             })
+            ->when(request('tags'), function (Builder $query, $tags) {
+                $query->whereHas('tags', function (Builder $q) use ($tags) {
+                    $q->whereIn('slug', explode(',', $tags));
+                });
+            })
             ->when(request('tag'), function (Builder $query, $tag) {
                 $query->whereHas('tags', function (Builder $q) use ($tag) {
                     $q->where('slug', $tag);
