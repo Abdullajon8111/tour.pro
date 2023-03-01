@@ -1,5 +1,5 @@
 <div class="form-group mt-3">
-    <a class="btn btn-outline-info mt-2 mr-1" href="{{ route('frontend.page.index') }}">{{ __('Все') }}</a>
+    <a class="btn btn-outline-info mt-2 mr-1" href="{{ route('frontend.page.index') }}"> {{ __('Все') }} </a>
 
     @foreach($tags as $tag)
         <button onclick="searchByTags('{{ $tag->slug }}')"
