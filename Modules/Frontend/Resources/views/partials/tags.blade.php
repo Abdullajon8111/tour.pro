@@ -9,8 +9,6 @@
         </button>
     @endforeach
 
-    qwasd
-
     @push('after_scripts')
         <script>
             function searchByTags(tag) {
