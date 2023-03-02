@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
@@ -48,6 +49,14 @@ class Tour extends Model
         ];
     }
 
+    public static function statuses()
+    {
+        return [
+            self::STATUS_UNDER_REVIEW => __('На рассмотрении'),
+            self::STATUS_PUBLISHED => __('Опубликовано')
+        ];
+    }
+
     protected static function boot()
     {
         parent::boot();
@@ -56,14 +65,6 @@ class Tour extends Model
             $model->status = self::STATUS_UNDER_REVIEW;
             $model->user_id = auth()->id();
         });
-    }
-
-    public static function statuses()
-    {
-        return [
-            self::STATUS_UNDER_REVIEW => __('На рассмотрении'),
-            self::STATUS_PUBLISHED => __('Опубликовано')
-        ];
     }
 
     public function getDynamicSEOData(): SEOData
@@ -173,5 +174,15 @@ class Tour extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function lastAd(): HasOne
+    {
+        return $this->hasOne(Ad::class, 'tour_id')->latestOfMany();
+    }
+
+    public function isTop()
+    {
+        return $this->lastAd();
     }
 }

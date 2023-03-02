@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Goodoneuz\PayUz\Models\Transaction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ad extends Model
@@ -27,5 +29,15 @@ class Ad extends Model
     public function tour(): BelongsTo
     {
         return $this->belongsTo(Tour::class);
+    }
+
+    public function transaction(): MorphOne
+    {
+        return $this->morphOne(Transaction::class, 'transactionable')->latestOfMany();
+    }
+
+    public function isPayed(): bool
+    {
+        return $this->transaction()->exists() and $this->transaction->state == 2;
     }
 }

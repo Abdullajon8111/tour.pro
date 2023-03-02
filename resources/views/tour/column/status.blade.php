@@ -8,6 +8,9 @@
     $column['prefix'] = $column['prefix'] ?? '';
     $column['suffix'] = $column['suffix'] ?? '';
     $column['text'] = $column['prefix'].Str::limit($value ?? '', $column['limit'], '[...]').$column['suffix'];
+
+    /** @var \App\Models\Tour $tour */
+    $tour = $entry;
 @endphp
 
 <span>
@@ -43,10 +46,17 @@
     @endif
 
     @if($entry->status == \App\Models\Tour::STATUS_PUBLISHED)
-        <a href="{{ route('ads.index', $entry) }}" class="btn btn-sm btn-outline-info">
-            <i class="la la-bookmark"></i>
-            {{ __('Рекламировать') }}
-        </a>
+
+        @dump($tour->lastAd)
+
+        @if(!$tour->lastAd || ($tour->lastAd && !$tour->lastAd->isPayed()))
+            <a href="{{ route('ads.index', $entry) }}" class="btn btn-sm btn-outline-info mt-1">
+                <i class="la la-bookmark"></i>
+                {{ __('Рекламировать') }}
+            </a>
+        @endif
+
+
     @endif
 
     </div>
