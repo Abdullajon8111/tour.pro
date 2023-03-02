@@ -29,7 +29,7 @@ class AdTypeCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('name');
-        CRUD::column('label');
+        CRUD::column('label')->type('text');
         CRUD::column('amount');
         CRUD::column('lifetime');
     }
@@ -39,7 +39,7 @@ class AdTypeCrudController extends CrudController
         CRUD::setValidation(AdTypeRequest::class);
 
         CRUD::field('name');
-        CRUD::field('label');
+        CRUD::field('label')->type('type');
         CRUD::field('amount');
         CRUD::field('lifetime');
     }
