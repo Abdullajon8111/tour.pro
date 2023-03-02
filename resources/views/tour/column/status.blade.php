@@ -40,12 +40,14 @@
                 Unpublished
             </a>
         @endif
+    @endif
 
-    @else
+    @if($entry->status == \App\Models\Tour::STATUS_PUBLISHED)
         <a href="{{ route('ads.index', $entry) }}" class="btn btn-sm btn-outline-info">
             <i class="la la-bookmark"></i>
             {{ __('Рекламировать') }}
         </a>
     @endif
+
     </div>
 </span>
