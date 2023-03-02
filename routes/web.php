@@ -48,7 +48,7 @@ Route::any('/pay/{pay_type}/{key}/{amount}',function($pay_type, $key, $amount){
 Route::get('test', function () {
     $m = '63f5c2d8725dd9cc4831f667';
     $ac = '1';
-    $a = '500';
+    $a = '100000';
 
     $base64 = base64_encode("m={$m};ac.key={$ac};a={$a}");
     $url = "https://checkout.paycom.uz/{$base64}";

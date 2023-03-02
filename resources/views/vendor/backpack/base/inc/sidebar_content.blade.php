@@ -16,6 +16,12 @@
 
 <hr class="w-100">
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('log') }}'><i class='nav-icon la la-terminal'></i> Logs</a></li>
+
+<hr class="w-100">
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('tour-group-type') }}'><i class='nav-icon la la-question'></i> Tour group types</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('ad-type') }}'><i class='nav-icon la la-question'></i> Ad types</a></li>
+
 <hr class="w-100">
 @endrole
 
@@ -26,5 +32,3 @@
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('appeal') }}'><i class='nav-icon la la-file'></i> Appeals</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('comment') }}'><i class='nav-icon la la-comment'></i> Comments</a></li>
-
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('tour-group-type') }}'><i class='nav-icon la la-question'></i> Tour group types</a></li>

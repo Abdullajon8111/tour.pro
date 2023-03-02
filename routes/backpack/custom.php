@@ -28,5 +28,11 @@ Route::group([
     Route::crud('tag', 'TagCrudController');
     Route::crud('appeal', 'AppealCrudController');
     Route::crud('comment', 'CommentCrudController');
+
     Route::crud('tour-group-type', 'TourGroupTypeCrudController');
+    Route::crud('ad-type', 'AdTypeCrudController');
+
+    Route::get('/tour/{tour}/ads', 'AdsController@index')->name('ads.index');
+    Route::get('/tour/{tour}/ads/{type}/pay', 'AdsController@pay')->name('ads.pay');
+
 }); // this should be the absolute last line of this file

@@ -11,15 +11,15 @@
 @endphp
 
 <span>
-    <div class="text-center">
+    <div class="">
         @if($value == \App\Models\Tour::STATUS_UNDER_REVIEW)
-            <h6 class="badge badge-warning font-lg w-100 mx-0 my-1">
+            <h6 class="badge badge-warning font-lg mx-0 my-1">
             {{ \App\Models\Tour::statuses()[$value] }}
         </h6>
         @endif
 
         @if($value == \App\Models\Tour::STATUS_PUBLISHED)
-            <h6 class="badge badge-success font-lg w-100 mx-0 my-1">
+            <h6 class="badge badge-success font-lg mx-0 my-1">
             {{ \App\Models\Tour::statuses()[$value] }}
         </h6>
         @endif
@@ -41,6 +41,11 @@
             </a>
         @endif
 
+    @else
+        <a href="{{ route('ads.index', $entry) }}" class="btn btn-sm btn-outline-info">
+            <i class="la la-bookmark"></i>
+            {{ __('Рекламировать') }}
+        </a>
     @endif
     </div>
 </span>

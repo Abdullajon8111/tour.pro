@@ -18,7 +18,9 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 class TourCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation {store as traitStore;}
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation {
+        store as traitStore;
+    }
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
@@ -105,9 +107,9 @@ class TourCrudController extends CrudController
         CRUD::field('end_time')->label(__('Время окончания'))->tab(__('Описание'));
 
         CRUD::addField([
-            'name'  => 'program',
+            'name' => 'program',
             'label' => __('Программа'),
-            'type'  => 'repeatable',
+            'type' => 'repeatable',
             'fields' => [
                 [
                     'name' => 'title',
@@ -127,7 +129,7 @@ class TourCrudController extends CrudController
 
                 ]
             ],
-            'new_item_label'  => __('backpack::crud.add'),
+            'new_item_label' => __('backpack::crud.add'),
             'tab' => __('Программа'),
         ]);
 

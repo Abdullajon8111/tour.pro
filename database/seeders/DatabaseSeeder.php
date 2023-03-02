@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\AdType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RegionSeeder::class);
 
         $this->call(PayUzSeeder::class);
+
+        $this->call(AdType::class);
     }
 }

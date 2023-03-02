@@ -1,6 +1,6 @@
 <form action="{{ route('frontend.page.index') }}" method="get">
     <div class="row">
-        <div class="form-group col-lg-3">
+        <div class="form-group col-lg-3 mb-0">
             <select class="form-control custom-select select2" name="country">
                 <option value="">{{ __('Выберите направление') }}</option>
                 @foreach($countries as $key => $value)
@@ -9,7 +9,7 @@
             </select>
         </div>
 
-        <div class="form-group col-lg-3">
+        <div class="form-group col-lg-3 mb-0">
             <select class="form-control custom-select select2" name="region">
                 <option value="">{{ __('Выберите область') }}</option>
                 @foreach($regions as $region)
@@ -18,7 +18,7 @@
             </select>
         </div>
 
-        <div class="form-group col-lg-3">
+        <div class="form-group col-lg-3 mb-0">
             <div class="input-group">
                 <input name="key" type="text" class="form-control" placeholder="{{ __('Туры по словам') }}" value="{{ request('key') }}">
                 <div class="input-group-append">

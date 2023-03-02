@@ -1,9 +1,11 @@
 <div class="form-group mt-3">
     <a class="btn btn-outline-info mt-2 mr-1" href="{{ route('frontend.page.index') }}"> {{ __('Все') }} </a>
 
+    @php $r_tag = explode(',', request('tags')) @endphp
+
     @foreach($tags as $tag)
         <button onclick="searchByTags('{{ $tag->slug }}')"
-                class="btn btn-outline-primary mt-2 mr-1 {{ in_array($tag->slug, explode(',', request('tags'))) ? 'btn-primary' : 'btn-outline-primary' }}">
+                class="btn btn-outline-primary mt-2 mr-1 {{ in_array($tag->slug, $r_tag) ? 'btn-primary' : 'btn-outline-primary' }}">
 
             {{ $tag->name }}
         </button>
@@ -15,7 +17,7 @@
                 const urlSearchParams = new URLSearchParams(window.location.search)
                 const params = Object.fromEntries(urlSearchParams.entries())
 
-                let tags_array = [];
+                let tags_array = []
                 if (params['tags']) {
                     tags_array = params['tags'].split(',')
                 }
