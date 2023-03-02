@@ -47,7 +47,7 @@
 
     @if($entry->status == \App\Models\Tour::STATUS_PUBLISHED)
 
-        @dump($tour->lastAd)
+{{--        @dump($tour->lastAd)--}}
 
         @if(!$tour->lastAd || ($tour->lastAd && !$tour->lastAd->isPayed()))
             <a href="{{ route('ads.index', $entry) }}" class="btn btn-sm btn-outline-info mt-1">
