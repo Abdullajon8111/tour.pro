@@ -39,7 +39,7 @@ class AdTypeCrudController extends CrudController
         CRUD::setValidation(AdTypeRequest::class);
 
         CRUD::field('name');
-        CRUD::field('label')->type('type');
+        CRUD::field('label')->type('text');
         CRUD::field('amount');
         CRUD::field('lifetime');
     }
