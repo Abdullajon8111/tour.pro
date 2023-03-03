@@ -15,6 +15,7 @@ class Ad extends Model
     use SoftDeletes;
 
     protected $guarded = ['id'];
+    protected $dates = ['expired_at'];
 
     public function type(): BelongsTo
     {
@@ -33,7 +34,7 @@ class Ad extends Model
 
     public function transaction(): MorphOne
     {
-        return $this->morphOne(Transaction::class)->latestOfMany();
+        return $this->morphOne(Transaction::class, 'transactionable')->latestOfMany();
     }
 
     public function isPayed(): bool
