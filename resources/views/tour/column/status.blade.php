@@ -47,9 +47,7 @@
 
     @if($entry->status == \App\Models\Tour::STATUS_PUBLISHED)
 
-        @dump($tour->lastAd->isPayed())
-
-        @if(!$tour->lastAd || ($tour->lastAd && !$tour->lastAd->isPayed()))
+        @if(!$tour->lastAd || ($tour->lastAd && !$tour->lastAd->status == 2))
             <a href="{{ route('ads.index', $entry) }}" class="btn btn-sm btn-outline-info mt-1">
                 <i class="la la-bookmark"></i>
                 {{ __('Рекламировать') }}
