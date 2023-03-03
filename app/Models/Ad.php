@@ -33,7 +33,7 @@ class Ad extends Model
 
     public function transaction(): MorphOne
     {
-        return $this->morphOne(Transaction::class, 'transactionable')->latestOfMany();
+        return $this->morphOne(Transaction::class)->latestOfMany();
     }
 
     public function isPayed(): bool

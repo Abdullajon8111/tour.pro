@@ -38,6 +38,8 @@ class TourCrudController extends CrudController
 
     protected function setupListOperation()
     {
+        $this->crud->query = Tour::latest()->with('lastAd', 'lastAd.transaction');
+
         if (auth()->user()->hasRole(Role::AGENT)) {
             CRUD::addClause('where', 'user_id', '=', auth()->id());
         }
