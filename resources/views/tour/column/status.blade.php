@@ -47,7 +47,7 @@
 
     @if($entry->status == \App\Models\Tour::STATUS_PUBLISHED)
 
-        @if(true))
+        @if(true)
             <a href="{{ route('ads.index', $entry) }}" class="btn btn-sm btn-outline-info mt-1">
                 <i class="la la-bookmark"></i>
                 {{ __('Рекламировать') }}
