@@ -34,5 +34,7 @@ Route::group([
 
     Route::get('/tour/{tour}/ads', 'AdsController@index')->name('ads.index');
     Route::get('/tour/{tour}/ads/{type}/pay', 'AdsController@pay')->name('ads.pay');
+    Route::get('/tour/{tour}/ads/{uuid}/callback', 'AdsController@callback')->name('ads.callback');
+    Route::get('/thank-you/{ad}', 'AdsController@thankYou')->name('ads.thank-you');
 
 }); // this should be the absolute last line of this file

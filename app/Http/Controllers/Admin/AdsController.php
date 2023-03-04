@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Ad;
 use App\Models\AdType;
 use App\Models\Tour;
-use Illuminate\Http\Request;
+use Str;
 
 class AdsController extends Controller
 {
@@ -27,16 +27,37 @@ class AdsController extends Controller
         $ad->user_id = auth()->id();
         $ad->amount = $type->amount;
         $ad->expired_at = now()->addDays($type->lifetime);
-
+        $ad->uuid = Str::uuid();
         $ad->save();
 
         $m = '63f5c2d8725dd9cc4831f667';
         $ac = strval($ad->id);
         $a = strval($ad->amount);
+        $c = route('ads.callback', [
+            'tour' => $tour->id,
+            'uuid' => $ad->uuid
+        ]);
 
-        $base64 = base64_encode("m={$m};ac.key={$ac};a={$a}");
+        $base64 = base64_encode("m={$m};ac.key={$ac};a={$a};c={$c}");
         $url = "https://checkout.paycom.uz/{$base64}";
 
         return redirect()->to($url);
+    }
+
+    public function callback(Tour $tour, $uuid)
+    {
+        $ad = Ad::whereTourId($tour->id)->whereUuid($uuid)->first();
+        $ad->status = 2;
+        $ad->save();
+
+        $tour->top_expired_at = $ad->expired_at;
+        $tour->save();
+
+        return redirect()->route('ads.thank-you', $ad->id);
+    }
+
+    public function thankYou(Ad $ad)
+    {
+        return view('ad.thank-you');
     }
 }

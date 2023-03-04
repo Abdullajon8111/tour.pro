@@ -56,7 +56,6 @@
             <div class="btn btn-info btn-sm mt-1">TOP: {{ $tour->lastAd->expired_at->format('d.m.Y') }}</div>
         @endif
 
-
     @endif
 
     </div>
