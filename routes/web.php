@@ -44,14 +44,23 @@ Route::any('/pay/{pay_type}/{key}/{amount}',function($pay_type, $key, $amount){
 });
 
 
+$admin = \App\Models\Role::ADMIN;
 
-Route::get('test', function () {
-    $m = '63f5c2d8725dd9cc4831f667';
-    $ac = '1';
-    $a = '100000';
+Route::middleware("role:{$admin}")->name('payment.')->prefix('payment')->namespace('Goodoneuz\PayUz\Http\Controllers')->group(function() {
+    Route::any('dashboard','PageController@dashboard')->name('dashboard');
+    Route::any('editors','PageController@editors')->name('editors');
+    Route::any('blank','PageController@blank')->name('blank');
+    Route::any('settings','PageController@settings')->name('settings');
+    Route::get('payment_params/delete/{param_id}','PaymentSystemController@deleteParam')->name('payment_systems.delete_param');
+    Route::get('payment_systems/edit/status/{payment_system}','PaymentSystemController@editStatus')->name('payment_systems.edit_status');
 
-    $base64 = base64_encode("m={$m};ac.key={$ac};a={$a}");
-    $url = "https://checkout.paycom.uz/{$base64}";
+    // --editable functions
+    Route::any('/api/editable/update','ApiController@file_put')->name('api.file_put');
+    // end --editable functions
 
-    return redirect()->to($url);
+    Route::resource('transactions','TransactionController');
+    Route::resource('projects','ProjectController');
+    Route::resource('payment_systems','PaymentSystemController');
+    Route::resource('transactions','TransactionController');
 });
+
