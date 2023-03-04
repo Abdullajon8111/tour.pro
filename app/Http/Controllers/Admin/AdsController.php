@@ -46,7 +46,7 @@ class AdsController extends Controller
 
     public function callback(Tour $tour, $uuid)
     {
-        $ad = Ad::whereTourId($tour->id)->whereUuid($uuid)->first();
+        $ad = Ad::whereTourId($tour->id)->whereUuid($uuid)->firstOrFail();
         $ad->status = 2;
         $ad->save();
 
