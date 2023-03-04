@@ -20,10 +20,10 @@ class PageController extends Controller
     {
         $countries = Country::getCountries();
         $regions = Region::all();
-        $tours = Tour::search()->paginate(10);
+        $tours = Tour::search()->topOrder()->paginate(10);
         $tags = Tag::withCount('tours')->orderBy('tours_count')->take(8)->get();
 
-        $sliderTours = Tour::latest()->take(4)->get();
+        $sliderTours = Tour::topOrder()->take(4)->get();
 
         return view('frontend::index', compact('tours', 'countries', 'regions', 'tags', 'sliderTours'));
     }
@@ -48,7 +48,7 @@ class PageController extends Controller
     {
         $countries = Country::getCountries();
         $regions = Region::all();
-        $tours = Tour::search()->where('user_id', $user->id)->paginate(10);
+        $tours = Tour::search()->topOrder()->where('user_id', $user->id)->paginate(10);
         $tags = Tag::withCount('tours')->orderBy('tours_count')->take(8)->get();
 
         return view('frontend::index', compact('tours', 'countries', 'regions', 'tags'));
@@ -59,7 +59,7 @@ class PageController extends Controller
     {
         $countries = Country::getCountries();
         $regions = Region::all();
-        $tours = Tour::search()->whereHas('favorites', function (Builder $query) {
+        $tours = Tour::search()->topOrder()->whereHas('favorites', function (Builder $query) {
             $query->where('user_id', auth()->id());
         })->paginate(10);
 

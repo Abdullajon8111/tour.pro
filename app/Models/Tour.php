@@ -5,6 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Cviebrock\EloquentSluggable\Sluggable;
+use DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -135,7 +136,6 @@ class Tour extends Model
             ->with('tags')
             ->with('group')
             ->has('user')
-            ->latest()
             ->where('status', Tour::STATUS_PUBLISHED)
             ->when(request('key'), function (Builder $query, $key) {
                 $query->where(function (Builder $query) use ($key) {
@@ -164,6 +164,18 @@ class Tour extends Model
                     $q->where('slug', $tag);
                 });
             });
+    }
+
+    public function scopeTopOrder(Builder $query): Builder
+    {
+        return $query
+            ->select([
+                '*',
+                DB::raw('if(top_expired_at < now(), 0, 1) as top')
+            ])
+            ->orderByDesc('top')
+            ->orderByDesc('topped_at')
+            ->orderByDesc('id');
     }
 
     public function favorites(): HasMany
