@@ -51,6 +51,7 @@ class AdsController extends Controller
         $ad->save();
 
         $tour->top_expired_at = $ad->expired_at;
+        $tour->topped_at = now();
         $tour->save();
 
         return redirect()->route('ads.thank-you', $ad->id);
