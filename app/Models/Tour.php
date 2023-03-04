@@ -171,7 +171,7 @@ class Tour extends Model
         return $query
             ->select([
                 '*',
-                DB::raw('if(top_expired_at < now(), 0, 1) as top')
+                DB::raw('if(COALESCE(top_expired_at, 0) < now(), 0, 1) as top')
             ])
             ->orderByDesc('top')
             ->orderByDesc('topped_at')

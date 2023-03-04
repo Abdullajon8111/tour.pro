@@ -35,10 +35,18 @@
 {{--                 src="{{ asset("storage/{$tour->banner_image}") }}"--}}
 {{--                 alt="tour-img">--}}
 
-            <div class="d-flex justify-content-center"
+            <div class="d-flex align-content-end align-items-end"
                  style="height: 250px;
                         background: url('{{ asset('storage/' . $tour->banner_image) }}');
                         background-size: cover">
+
+                @if(isset($tour->top) && $tour->top == 1)
+                    <div class="btn btn-warning mb-2 ml-2">
+                        <i class="la la-fire text-danger"></i>
+                        TOP
+                    </div>
+                @endif
+
             </div>
         </a>
     </div>
