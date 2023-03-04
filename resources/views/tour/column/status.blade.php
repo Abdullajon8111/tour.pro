@@ -47,7 +47,7 @@
 
     @if($entry->status == \App\Models\Tour::STATUS_PUBLISHED)
 
-        @if(!$tour->top_expired_at || (!is_null($tour->top_expired_at) && $tour->top_expired_at->timestamp < now()->timestamp))
+        @if(!$tour->top_expired_at || (!is_null($tour->top_expired_at) && $tour->top_expired_at->getTimestamp() < now()->timestamp))
             <a href="{{ route('ads.index', $entry) }}" class="btn btn-sm btn-outline-info mt-1">
                 <i class="la la-bookmark"></i>
                 {{ __('Рекламировать') }}

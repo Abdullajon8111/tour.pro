@@ -39,7 +39,7 @@ class Tour extends Model
         'images' => 'array',
         'program' => 'array'
     ];
-    protected $dates = ['start_time', 'end_time'];
+    protected $dates = ['start_time', 'end_time', 'top_expired_at'];
 
     public static function time_types(): array
     {
