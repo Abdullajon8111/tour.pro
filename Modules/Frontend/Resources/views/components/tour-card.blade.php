@@ -60,14 +60,14 @@
         <div class="row">
             <div class="col-5">
                 <div class="bg-secondary rounded px-2 p-1">
-                    <i class="la la-clock mr-2 text-danger"></i>
+                    <i class="la la-clock mr-1 text-danger"></i>
                     <span>{{ $tour->duration }}</span>
                 </div>
             </div>
 
             <div class="col-3">
                 <div class="bg-secondary rounded px-2 p-1">
-                    <i class="la la-user mr-2 text-danger"></i>
+                    <i class="la la-user mr-1 text-danger"></i>
                     <span>{{ $tour->age_limit }}</span>
                 </div>
             </div>
@@ -75,7 +75,7 @@
             @if($tour->group_type)
                 <div class="col-4">
                     <div class="bg-secondary rounded px-2 p-1">
-                        <i class="la la-users mr-2 text-danger"></i>
+                        <i class="la la-users mr-1 text-danger"></i>
                         <span>{{ $tour->group->name }}</span>
                     </div>
                 </div>
